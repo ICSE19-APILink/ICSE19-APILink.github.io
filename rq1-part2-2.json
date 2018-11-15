@@ -1,0 +1,402 @@
+[
+    {
+        "text": "After having called #shutdown()# , you can use #awaitTermination(long timeout, TimeUnit unit)# to block the calling thread until all tasks have completed execution. As timeout you can use a value excessively big if you want to wait as long as it is needed for the tasks to complete however as it could make your thread wait forever if a task never ends, it is always better to set a reasonable timeout in order to execute some tasks if it is abnormally too long. For example: #tp.shutdown()#;\n#tp.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS)#;", 
+        "id": "40786217"
+    }, 
+    {
+        "text": " Yes. One is enough. Also think about to make your #DatabaseHelper# as Singleton . Like i wrote above, you will put all tables into one class. Result will be same but difference is i guess that you write less code, you will always have one instance of Helper, code will be more clean and better readable. Imagine some business company that has big database with 20 tables. Still company has only one database. You can imagine #SQLiteOpenHelper# as one big database(it wraps all required logic). Hence it's not logic to create 4 different classes where each wraps one table. It's like you would have 4 databases with one table. My suggestion: Is to create one universal #DatabaseHelper# which will wrap all required logic and then to achieve clean and working solution you can create four classes which will implement CRUD operations for each table. Example:", 
+        "id": "15467275"
+    }, 
+    {
+        "text": "By default #Asynctask# uses a serial executor, so a single thread is used to execute all the asynctasks in a single process. But you can change it. Check the doc . You can also check the source of Asynctask here", 
+        "id": "12606488"
+    }, 
+    {
+        "text": "By calling #Frag.show#(#getSupportFragmentManager()#, \"warndialog\"); , you are in fact performing a fragment #transaction# (see #show()# ). If the activity's #onSaveInstanceState()# method has been called, an #IllegalStateException# will be thrown when you try to show the dialog. You need to change your code to ensure that when you show the dialog fragment, you do so after the activity state has been restored (i.e., #onPostResume()#). See this blog post for more information. You can also commit the transaction allowing state loss ;", 
+        "id": "21373861"
+    }, 
+    {
+        "text": "How about looping over all markers and checking the distance using #Location.distanceBetween# ? There is no magic involved ;)", 
+        "id": "19218136"
+    }, 
+    {
+        "text": "Don't use a #JOptionPane# for this but rather use a non-modal JDialog ( #JDialog API link# ), one that stays open, since as a JDialog, you are in full control over when or whether it closes. These are easy to create, similar to #JFrames# except that in the constructor, you pass in the parent Window, often a JFrame, the title and the #ModalityType#, here ModalityType.MODELESS.", 
+        "id": "40899642"
+    }, 
+    {
+        "text": "You don't have to worry about memory leaks in either case, but it's good that you're keeping an eye on where you're passing Context objects. Intent simply uses the Context parameter to look up your package name when you use the #Intent(Context, Class)# constructor or #setClass(Context, Class)# method. They're just convenience methods.", 
+        "id": "9367171"
+    }, 
+    {
+        "text": "Try using #dispatchKeyEvent(KeyEvent event)# in your Activity", 
+        "id": "11276763"
+    }, 
+    {
+        "text": "GridLayout needs API 14 You can create a Layout for the other android versions -> Adapt layout to Android platform or API level", 
+        "id": "12532656"
+    }, 
+    {
+        "text": "Use #SoundPool# for low-latency media playback, instead of #MediaPlayer# .", 
+        "id": "11076894"
+    }, 
+    {
+        "text": "Android: How to detect an e-ink screen? I'd like to make my app more friendly for e-ink screens, i.e. reducing gradients, removing animations etc.\nBefore I can add separate layouts for those screen types, I first need a way to detect them. Did somebody find a good way to do this? The #Display class# doesn't look like it's providing a way to detect the display type... Edit: By e-ink screen, I mean a screen that works with the e-paper technology .", 
+        "id": "15221787"
+    }, 
+    {
+        "text": "If you read the documentation of #getnetwordOperatorName()# it says: As you see that result may be unreliable for CDMA networks. So check if you are using CDMA. That's my one cents.", 
+        "id": "20062506"
+    }, 
+    {
+        "text": "Use a regex (see Pattern and matcher ): you can easily build #ArrayList# that contains each matched group you find. Or, as other suggested, you can split on non-digits characters ( \\D ): Note that \\ has to be escaped in Java, hence the need of \\\\ .", 
+        "id": "28062681"
+    }, 
+    {
+        "text": "I had an interesting problem that brought me to this question and happy to provide a solution that may help someone else if they come this way due to a googlebingyahoo search. #mwebVew.reload()# would not pick up the new URL I wanted to load once I returned from a preference screen where I either logged on the user or logged off the user. It would update the shared preferences well enough but not update and replace the url web page. So after a few hours of not seeing an answer I tried the following and it worked a real treat. #mWebView.resumeTimers()#; Here is the link to the doco if you want more info. Hope it saves someone else the pain I went through, and happy to have someone tell me I should of implemented it another way.", 
+        "id": "18348530"
+    }, 
+    {
+        "text": "Socket not disconnecting when connectivity changes My chat application connects to a server and information is sent/received by the user. When the connection changes, such as 3g->wifi, wifi->3g, losing a data connection, etc, the socket sometimes stays connected for ages before disconnecting. During this time, it's impossible to tell if the connection is still active, it seems as if messages are being sent just fine. Other times, when sending a message, it will throw an IO error and disconnect. Apart from implementing code to detect connection changes and reconnecting appropriately, is it possible to have the socket immediately throw an IO exception when connectivity changes? Edit: I'm connecting using the following code: I'm not using #setSoTimeout# as data may not be transferred for long periods of time depending on the remote server's configuration.", 
+        "id": "2008668"
+    }, 
+    {
+        "text": "#NotificationBuilder.build()# requires #API Level 16# or higher. Anything between API Level 11 & 15 you should use #NotificationBuilder.getNotification()# . So use", 
+        "id": "16445949"
+    }, 
+    {
+        "text": "Use an #AsyncTask# instead of a thread. It's way easier to use and provides a built-in mechanism to be notified of progress updates. Look at this question for a complete sample : Download a file with Android, and showing the progress in a #ProgressDialog#", 
+        "id": "11639016"
+    }, 
+    {
+        "text": "Use #listView.setChoiceMode(int choiceMode)#; Parameters choiceMode One of CHOICE_MODE_NONE, CHOICE_MODE_SINGLE, or CHOICE_MODE_MULTIPLE from class #android.widget.AbsListView# http://developer.android.com/reference/android/widget/AbsListView.html##setChoiceMode(int)# You also need to add MultiChoiceModeListener, you can have CHOICE_MODE_SINGLE (#android.widget.AbsListView.MultiChoiceModeListener#) Refer to the sample below http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List16.html", 
+        "id": "8566070"
+    }, 
+    {
+        "text": "Environment variables are only visible in a process that sets the variable, and child processes launched after setting the variable. When you set the environment variable from the adb shell you are not in the parent process of the process that launches the Android application, so the application cannot see the variable you set. In Java (and Android) there is no #System.setenv()# , but if you need to set an environment variable for your own program to read there are always better ways. One such way is setting and getting Properties instead. Setting environment variables in Java is not really possible (well, it is, but you don't want to do it). You can use #ProcessBuilder# if you want to set a variable that another process should read, but that's if the process is launched from a Java/Android program. Think about what problem you're trying to solve, and if it can be done without using environment variables. They're not a good fit in Java, and are even worse on Android.", 
+        "id": "7613326"
+    }, 
+    {
+        "text": "#AsyncTask# has a #publishProgress method# that should make it really painless to push updates from your background task to the UI thread.", 
+        "id": "3348121"
+    }, 
+    {
+        "text": "#PriorityQueue# :", 
+        "id": "36144209"
+    }, 
+    {
+        "text": "Use the method #createScaledBitmap()# of #android.graphics.Bitmap# .", 
+        "id": "5373218"
+    }, 
+    {
+        "text": "To match a string that only contains any letters or an underscore in Android, use with String#matches the following regex: See the regex demo All the shorthand character classes are Unicode aware in Android regex . Thus, \\w matches all Unicode letters, digits and an underscore. \\W matches the reverse. So, [^\\W\\d] matches any character but a non-word char and that is not a digit = matches all letters and an underscore. UPDATE You can use How does this work? ^ - (omitted in Android pattern since String#matches requires a full string match by anchoring the pattern with ^ and $ by default) start of string (?:[^\\\\W\\\\d]+(?: [^\\\\W\\\\d]+)?)? - the whole pattern is enclosed with (?:...)? - optional (i.e. there can be 1 or 0 of it, see final ? ) non-capturing ( ?: ) group matching: [^\\\\W\\\\d]+ - 1 or more \"word\" characters except digits (?: [^\\\\W\\\\d]+)? - again, an optional, 1 or 0, non-capturing group that matches: - a regular literal space [^\\\\W\\\\d]+ - see above To understand non-capturing groups, read What is a non capturing group? (?:) , a very helpful Non-Capturing Groups and a Are optional non-capturing groups redundant? . It is a grouping construct that does not push the text it matches into the memory stack, thus, it is more memory-efficient. If you need to access the captured values, you need to use a capturing group, i.e. a pair of unescaped parentheses (...) .", 
+        "id": "36401370"
+    }, 
+    {
+        "text": "Service running vs no Service running Each app has at least one Process that is started when your app is running. That process uses at least some memory and people like to use task killers to free that although Android does that automatically once memory is actually required. This memory is definitely a disadvantage for the Service case. CPU / battery usage is only increased when something is happening and therefore actively using the CPU or when your app forces the system to keep resources enabled e.g. when you keep a #WakeLock# . If you don't do any of this your app uses about 0 CPU / battery and acts pretty much like a stopped app that is kept in memory to speed up restarting it. The probability that you inadvertently use some resources is certainly higher if your code is running. If no Service / Activity is running at all and you just register a #BroadcastReceiver# in your manifest you basically tell the system to include your receiver in the list of receivers it checks when sending broadcasts. Very minimal extra work. Manifest receivers also have the advantage that the system can't get killed when the memory pressure is high. Those receivers just work and you don't need to care at all. You can even enable / disable them if you wish to do so. #ContentObserver# vs #BroadcastReceiver# Both should use the #ActivityThread# / #Looper# / #MessageQueue# mechanism usually refered to as the \"UI Thread\" which delivers all events to your app and calls all the #onCreate# , #onTouch# etc methods. Easily visible when you look at a stacktrace when something breaks in these methods: AndroidRuntime(521): FATAL EXCEPTION: main\nAndroidRuntime(521): #java.lang.RuntimeException#: MotionEvent{405215b0 action=0 x=66.0 y=78.0 pressure=1.0 size=0.0} recycled twice!\nAndroidRuntime(521): at android.view.MotionEvent.recycle(MotionEvent.java:659)\nAndroidRuntime(521): at android.view.ViewRoot.handleMessage(ViewRoot.java:1880)\nAndroidRuntime(521): at android.os.Handler.dispatchMessage(Handler.java:99)\nAndroidRuntime(521): at #android.os.Looper.loop#(Looper.java:123)\nAndroidRuntime(521): at #android.app.ActivityThread.main(ActivityThread.java:3647)# If no broadcast or content change notification is to be delivered that thread simply waits. Waiting does not use the CPU (i.e. actively cycle in a loop all the time) but tells the system that it does not need to schedule processing time for that thread. CPU usage is effectively ~0 in that time. So IMO there is no difference at all between registering one of the two at runtime. The only difference that could give advantages to one of the methods would be if one if the methods trigger more often. 1 vs 5 of them Does not matter. There are so many receivers / observers in the system that it does not really matter if you add 1 or 5. If you add like 1000 you'll probably notice On a sidenote: Don't block the UI thread from doing it's work. Although receivers and services don't have UI their callback methods are executed on the UI thread. So if you do any long-running operation like downloading stuff in any of the onReceive / Service#onCreate etc methods that will lead to ANRs the same way it does e.g. in Activity#onCreate .", 
+        "id": "12318602"
+    }, 
+    {
+        "text": "I've never done this before, but personally I would try setting up the sample #BroadcastReceiver# referenced below and see if I could get a connection going. http://developer.android.com/guide/topics/connectivity/usb/host.html Then I'd use #getInterfaceProtocol()# to see if I was able to get the expected protocol.", 
+        "id": "16153261"
+    }, 
+    {
+        "text": "04-09 11:37:28.708: ERROR/AndroidRuntime(4003): at #com.test.Test.onCreate(Test.java:57)# If I'm not mistaken, in on line 57, you have If so, the referenced image is so big that when Android tries to decode it into a bitmap, it cosumes all the free VM heap and throws theerror. You cant decode big bitmaps with I copied the code from the link that user699618 recommended, i ve used it before and it solves the problem). After that you can just use CENTER_CROP or whatever you need on #ImageView.setScaleType()# . You can find the Scale Type options in here and setScaleType details in #hete# . Hope this helps. i'd also recommend not to have such heavy pictures in resources. Make them smaller before saving them in the resorce forder.", 
+        "id": "5603263"
+    }, 
+    {
+        "text": "It is only getting the first value because you are using a keyListener. Everytime a key is 'released' in this case your #keyReleased# method gets called. I am not sure what your #carregarCombo# method is doing because you didn't post this code. However I would use a #DocumentListener# instead of a keyListener", 
+        "id": "41512142"
+    }, 
+    {
+        "text": " #openFileOutput()# is a method on Context . Your Activity , for example, is a subclass of Context . You need to call openFileOutput() on a valid instance of a Context , such as your Activity . For example, you can pass one into your #writeToFile()# method as a parameter.", 
+        "id": "27218328"
+    }, 
+    {
+        "text": "Images use a lot of the few megabytes RAM your app has. 1Megapixel = 4Megabyte raw imagedata (RGBA_8888 mode at least) that the app needs to hold in memory. Multiple large images will crash on any device. download images to filesystem, use them from there and decode them with a sample size > 1 if they are bigger than you need them / you have memory. immediately #recyle()# images if you don't need them. Their native buffer does not play well with GC.", 
+        "id": "10385665"
+    }, 
+    {
+        "text": "From handler #Constructor# API : This means that the Handler you created is associated with the Looper of the UI thread, which means that the runnable is being executed on the UI thread (therefore you see the pause of the UI).\nI suggest that you will use Android's #AsyncTask# or instantiate the Handler on a background thread.", 
+        "id": "19635147"
+    }, 
+    {
+        "text": "You need to clear cookies too. Use #CookieManager# to remove all cookies. For example, you can add this to your onDestroy(): #CookieManager.getInstance().removeAllCookie()#;", 
+        "id": "4902752"
+    }, 
+    {
+        "text": "The #GLSurfaceView# class provides an easy way to use #OpenGL#. There's a tutorial here", 
+        "id": "4623845"
+    }, 
+    {
+        "text": "You would need to process your string and build your array. You could either take a look at #.split(String regex)# (which might require you to do some more processing to clean the string) or else, use a regular expression and do as follows: Use a regex like so: \\[([^]]+?)\\] . This will seek out characters in between square brackets and put them into a group. Use the #.find()# method available from the Matcher class and iterate over the matches. Put everything into a list so that you can put in as many hits as you need. If you really need the result to be in an array, use the #.toArray()# method.", 
+        "id": "18890340"
+    }, 
+    {
+        "text": "GridView expects a Adpater which must be sub class of #ListAdapter# class.\nbut your #ImageAdapter# class extends #PagerAdapter# which is not a sub class for ListAdapter. try extending ListAdapter sub classes like #BaseAdapter# instead of PagerAdapter", 
+        "id": "20281045"
+    }, 
+    {
+        "text": "The new is used when you call the constructor for a function. #getAssets()# returns an #AssetManager#, it doesn't need to create a new one.", 
+        "id": "8765383"
+    }, 
+    {
+        "text": "Just read the documentation of #openFileOutput# - it creates the file, if it does not exist. The first line works, because it's compliant with the API.", 
+        "id": "9722031"
+    }, 
+    {
+        "text": "Use #RelativeLayout# or #GridLayout# (ICS and above only). This should get you started. It's not perfectly what you want but it hopefully is close. I didn't test the code so I don't even know if it compiles. Shouldn't be too far from the final code though. :)", 
+        "id": "9574681"
+    }, 
+    {
+        "text": "Is #onBeginningOfSpeech()# triggered locally or by the server? The documentation for onBeginningOfSpeech() says: But it doesn't say whether this is microphone-identified (i.e. local) event or server-identified event (i.e. needs Google speech servers to acknowledge start-of-speech). I tried to find clues in the source code , but at some point I got lost between the service, callbacks, interface... it's not a simple who-calls-who sequence. Do you happen to know whether the #onBeginningOfSpeech()# is performed locally (e.g. local circuit detects RMS change) or does it have to travel to Google servers and get their \"yes/no\"? I know that the speech recognition itself travels to Google's servers, but is it done for #onBeginningOfSpeech()# too?", 
+        "id": "11515872"
+    }, 
+    {
+        "text": "use as: see here public boolean #onKeyLongPress (int keyCode, KeyEvent event)# method takes two arguments first keyCode and second event", 
+        "id": "11299046"
+    }, 
+    {
+        "text": "I know this might not answer the question directly, but I'm going to respond to your comment about creating a #Runnable()# to do the work of switching for you because I suspect that it is probably messing with your data (hard to tell when you cant see the full code). I advise you to use a #ViewFlipper# instead of a #TextSwitcher# . The reason for doing that is that once you added the TextView 's inside your #ViewFlipper# , you can just set your flip interval and then start the flipping and it will do it automatically for you. As simple as this: In your current method that you described, when you call #items.notifyDataSetChanged()# you incur a huge performance hit because all items of your database are going to be re-read and your list will be \"re-drawn\" again. You should only do that if your actual data really changed rather than using it to switch between text that you already have and doesn't change from creation time. As a nice surprise, you might notice that your problem goes away because you don't have to re-read everything from you DB again and reduces the chances of mix-up of item1 and item2 since you will only need to read them once when the row is created in your ListView Just my 2 cents. Let me know how it goes.", 
+        "id": "6240183"
+    }, 
+    {
+        "text": " Are the activity lifecycle methods #onSaveInstanceState()# and #onRestoreInstanceState()# executed on the UI thread? Yes The documentation says that #executor.shutdown()# awaits any previously submitted tasks to complete. No. Where did you see that documentation? #ExecutorService.shutdown# reads: . So what happens to the runnables, in which I manipulate some old views? Nothing good. The activity they address is already destroyed. You should raise a flag and either abandon #task.onPostExecute()# , or save it until activity is recreated. Note you cannot save them in #onSaveInstanceState()# - the runnables themselves should take into account, whether the activity is alive. Will these runnables be executed immediately after the activity is recreated? No, until you take care of them. Recreating activity should not only restart background tasks, but also runnables with #onPostExecute# .", 
+        "id": "23058839"
+    }, 
+    {
+        "text": "If you're running on a platform that has ssh installed you could invoke command line processes using #ProcessBuilder# methods to perform whatever operations you need. Agricultural I know, but probably pragmatic given the OP's circumstances.", 
+        "id": "29033231"
+    }, 
+    {
+        "text": "If you're looking for the name from a resource ID, you can use #Resources.getResourceName()# . You can get the Resources object using #Context.getResources()# . Personally, I'd rather store an array of strings in your strings.xml and map that to the resource IDs, but it depends on what you're really trying to accomplish.", 
+        "id": "8749175"
+    }, 
+    {
+        "text": "According to the documentation for #performClick()# , the method will return true if you assigned an #OnClickListener# to the button. ...Did you?", 
+        "id": "14466619"
+    }, 
+    {
+        "text": "You could create a helper method: And then use it like this in your constructor: Note that the class #java.util.Objects# (Java 8) already contains similar helper methods. Also the Google Guava library has a class named Preconditions with similar helper methods. Similar for the example with color values:", 
+        "id": "31213636"
+    }, 
+    {
+        "text": "I would recommend making your changes on the Adapter, not the Grid (or list). Depending on the type of adapter you are using there are a couple different approaches. #ArrayAdapter# For an ArrayAdapter , using the standard modification methods ( add , addAll , clear , remove ) should update any views. #CursorAdapter# A CursorAdapter works in much the same way, except that you use either swapCursor or changeCursor to change the underlying data. That should notify all data set observers that the underlying data has changed. All Adapters If your observers don't get notified, usually because #setNotifyOnChange# was called, you can call #mAdapter.notifyDataSetChanged()# to manually update all listeners (UI views, services, etc.) that the underlying data has changed.", 
+        "id": "18105479"
+    }, 
+    {
+        "text": "Java char holds one Unicode/UTF-16 code unit. Many Unicode codepoints need only one code unit in their UTF-16 encoding and these code units are in broad ranges. Therefore, within those ranges , a char value can be considered a codepoint. Subtraction between char values gives the \"distance\" between them, which is mostly useful when dealing with the few \"well-organized\" sequences of codepoints, such as the Basic Latin Letters (A-Z or a-z). It's not generally useful to know the \"distance\" between a quarter note and a half note or a smiling face and a winking face, \u00e2\u20ac\u00a6. The result is an integer because, well, distance on a list of consecutive integers is measured by integers. Again, this technique is only valid under very strict circumstances. There is always a less limited way to do it. See the Unicode Code Charts . Also see the documentation for the #java.lang.Character class#.", 
+        "id": "34892500"
+    }, 
+    {
+        "text": " No, no wouldn't and your users wouldn't like you much either This is exactly what you should do. You can use a variety of ways including an #AsyncTask# and show a #ProgressDialog# while the work is being done. If it is taking this long then you might want to rethink your flow. Even if you go with a separate Thread and show a #ProgressBar# , most users aren't going to want to stare at that for 10 seconds. You should load the data in the background and allow them to do something else while it loads, if possible. You could use something like an #IntentService# depending on how you are getting the data. Example of AsyncTask Painless Threading", 
+        "id": "23479098"
+    }, 
+    {
+        "text": "You can call #notifyDataSetChanged# on #OnSeekBarChangeListener# Hope this help.", 
+        "id": "6297870"
+    }, 
+    {
+        "text": " As #IntentSerivice# extends Service there's nothing stopping you from calling #startForeground()# . You will have to show an actual notification though (There used to be a hack that enabled foreground service without a notification, but luckily it was fixed in 4.3). The default behavior for IntentService is START_NOT_STICKY . You can change it by calling #setIntentRedelivery(true)# in your constructor, or elsewhere. #ReentrantReadWrite# is a java level lock, not a file/db/OS level lock. This means that once the process is dead the lock is gone. (You did say 'a db lock` but I assume it's just inaccurate wording - you're not locking the DB somehow, are you?).", 
+        "id": "26437500"
+    }, 
+    {
+        "text": "For a #java.util.LinkedList# , use the Iterator. This will result in only a single traversal. The Iterator returned has access to the underlying link structure and can perform a removal without iterating. The Iterator is implicitly used anyway when you use the for-each loop form. You'd just be retaining the reference to it so you can make use of its functionality. You may also use listIterator for O(n) insertions.", 
+        "id": "26679248"
+    }, 
+    {
+        "text": "Have you had a read through the 'Hello ListView demo' ? It demonstrates how to use the #OnItemClickListener# . Now, that might not be exactly what you're after, but from an implementation point of view, adding an #OnItemSelectedListener# is identical: Edits as per comments below. You could try explicitly setting the selection to a specific item after populating the list to see if that triggers OnItemSelected. Assuming you have at least two items in your list: //Edit2: Actually, this will probably not make a difference, reading the documentation for #setSelection# . Alternatively you can keep track of the selected items yourself using the OnItemClickListener, assuming there's no other action upon clicking an item - which makes sense on devices with only a touch screen, as there is no way to differentiate between a 'selection' and 'click'. I'm guessing that at some point you want to do something with the selected items, so then you can just iterate over above list and grab the objects that were clicked/selected.", 
+        "id": "8621910"
+    }, 
+    {
+        "text": "If you are familiar with #XPath# , that is an option. I don't know if it would give you better performance compared to a parser. For parsers, I would recommend going with the SAX parser. It is usually pretty easy to work with. If you extend the #DefaultHandler#, there are a bunch of functions which you can override and leverage for your purposes. Some include: void #startElement()# - called for each start tag, function call also passes in attributes as an argument void #characters()# - called for the content within a tag void #endElement()# - called for each end/closing tag See the API reference for additional details.", 
+        "id": "3867934"
+    }, 
+    {
+        "text": "You need to manually disconnect your device by closing the socket You need to check, If the devices are connected . If yes, call reset function #ResetConnection# function definition. Edit 1 You will have to create a new #BluetoothSocket# and then call this method #getRemoteDevice()# . Here is a link to Documentation BluetoothSocket", 
+        "id": "35896650"
+    }, 
+    {
+        "text": "First of all, HttpParams is not a collection of query/GET params. It's used for \"HTTP protocol and framework parameters\" as the docs put it. So, in case of a GET request, you add query params by either appending \"?Celsius=32\" to that URL or use the #Uri.Builder# . For POST request, you have to use the #setEntity# method. Like in this example ( source ): Secondly, in order to read the response as a String you need something like this:", 
+        "id": "6040360"
+    }, 
+    {
+        "text": "You could use #URLDecoder# ( doc here) . It just decodes an x-www-form-urlencoded String.", 
+        "id": "11501602"
+    }, 
+    {
+        "text": "From #SimpleDateFormat #SimpleDateFormat(String, Locale) So the pattern should not change #DateFormatSymbols# The only thing that should change is month name, tzdata or day of week name if you'd used any. For getting a localized pattern String use #toLocalizedPattern()# http://developer.android.com/reference/java/text/SimpleDateFormat.html#toLocalizedPattern%28%29", 
+        "id": "14835321"
+    }, 
+    {
+        "text": "It sounds like you're processing the images in the main thread? I think it would be best if, instead, you just pass the URL to your second fragment and have it use a #Loader# to process those images in the background, with placeholders for each image as it's getting loaded. If you insist on doing the loading in the first fragment, you should just be able to set up and add your second fragment without any images, but have it be hidden. Then, once your loading is complete, you will still have access to your ViewPager from your first fragment and can use another transaction to show the second fragment when ready. P.S. it would be easier to read/understand your question if it was laid out more logically and not a huge paragraph.", 
+        "id": "26320002"
+    }, 
+    {
+        "text": "A service runs on the UI thread and a the UI thread already has a looper which is why you are getting that error. If you intented to do your work in a background thread then you might need to create a new thread for that code you want to run. Maybe you could look into #HandlerThread# .", 
+        "id": "11324222"
+    }, 
+    {
+        "text": "Check out the Android documentation for Displaying a Location Address . Here you create an #IntentService#, which runs on a worker thread and finishes itself after the onHandleIntent() has completed. They are using a #ResultReceiver# , that receives the results from #geocoder.getFromLocation#(lat, lng, 1). The handler passed into the ResultReceiver constructor, would be back on the main/ui thread. In this example, you wouldn't need to cancel the operation at all. It is running in a service, on a worker thread and therefore not blocking your main/ui thread. Also, the service shuts itself down after it completes geocoder.getFromLocation(lat, lng, 1). If you no longer wanted to receive the Location results back on the main/ui thread, you could easily handle that as well from within the ResultReceiver .", 
+        "id": "40099396"
+    }, 
+    {
+        "text": "You actually can programmatically change the overflow icon using a little trick. Here's an example: Create a style for the overflow menu and pass in a content description Now call #ViewGroup.findViewsWithText# and pass in your content description. So, something like: View.findViewsWithText was added in API level 14, so you'll have to use your own compatibility method: Results", 
+        "id": "22106474"
+    }, 
+    {
+        "text": "Got it! what needed is for me to assign an ID for my #pendingIntent# requestCode what I did is assign the same ID I used for my #notificationManager#. More info here .", 
+        "id": "18095832"
+    }, 
+    {
+        "text": "There's an entire list with descriptions on the Android #InputType# documentation page. PS - It is the first search result when you google 'android inputtype'.", 
+        "id": "13771593"
+    }, 
+    {
+        "text": "Look into using a #SimpleDateFormat# . Edit: It looks like you might want the format string \"E d MMM y H:m:s z\".", 
+        "id": "29414556"
+    }, 
+    {
+        "text": "You can actually receive the console messages from a WebView, which would allow you to catch the errors that it throws. To do so: Enable JavaScript on your WebView Set a #WebChromeClient# Override #onConsoleMessage# Example: Similar to what it says here , though that doc isn't complete and it uses a deprecated method. When running on Android KitKat, you can also enable remote debugging!", 
+        "id": "40485201"
+    }, 
+    {
+        "text": "When the app process gets killed, all services in this process also get killed. So no, a service can not outlive an Application object \u00e2\u20ac\u201c see #Process Lifecycle in the Service docs# .", 
+        "id": "34979276"
+    }, 
+    {
+        "text": "You have to enable the cache first, before calling #getDrawingCache()#.", 
+        "id": "6353996"
+    }, 
+    {
+        "text": "Several approaches are possible: Create a custom #FileChooserUI# by subclassing #BasicFileChooserUI# and limit the selection in your implementation of the nested class #SelectionListener# . Create a custom file browser, as shown here , and limit the selection in the relevant listener. Use the existing FileChooser and present a dialog when the selection exceeds three; consider using a #JTable# containing checkboxes as shown here . Use separate chooser panels, as shown here for two files via #createPathPanel()# . The best choice and exact details will depend on the use case.", 
+        "id": "32524411"
+    }, 
+    {
+        "text": "#postDelayed()# is not a great solution for a Service . As you note, it is tied to the main application thread, and usually we want services not doing work on the main application thread. Use other standard Java timing mechanisms, like #ScheduledExecutorService# .", 
+        "id": "32895525"
+    }, 
+    {
+        "text": "Convert the string to a number and divide by 100 (floating point): And format the result: Or if floating point imprecision could be an issue, use #BigDecimal# for the parsing and division, then format the resulting BigDecimal : Live Example", 
+        "id": "26481520"
+    }, 
+    {
+        "text": "In Java 8 you could use #DoubleSummaryStatistics# and do something like this: filter to keep only the entries you need; #flatMapToDouble# to merge your lists; and #summaryStatistics# to get both the minimum and maximum.", 
+        "id": "36182815"
+    }, 
+    {
+        "text": "Equivalent of ListView.setEmptyView in RecyclerView In RecyclerView , I want to set an empty view to be shown when the adapter is empty. Is there an equivalent of #ListView.setEmptyView()# ?", 
+        "id": "27414173"
+    }, 
+    {
+        "text": "You should use #LocalDate# rather than #LocalDateTime# . One is for a date-only value, the other for a date with time-of-day value. See examples on the #DateTimeFormatter# class documentation page.", 
+        "id": "39655245"
+    }, 
+    {
+        "text": "Use the #Bitmap.compress(...)# API. Edit To copy and scaledown the picture. Create a new empty bitmap, use it as a place for a canvas to draw to. Draw the old bitmap on the canvas with an appropriate Scale matrix or draw the old bitmap with a destination rectangle the same dimensions as your destination bitmap (depending on the api and effect you'd like to have), then save the destination bitmap. Or for only scaling use #Bitmap.createScaledBitmap()# .", 
+        "id": "7733880"
+    }, 
+    {
+        "text": "Why does my FFT gives a different visualizer output than Windows Media Player? I am trying to implement an audio spectrum analyzer in android using the #Visualizer# class. I am getting FFT data in the #onFftDataCapture()# method of #OnDataCaptureListener()# event and I'm drawing that on the canvas using drawLines() . But the spectrum display is not showing properly. I can see changes on left side of graph only. But in Window Media Player, the output of the same song is different. What I am missing? Can anyone help me on this with an example or a link? CODE #onPaint()# Where mVisualizer is Visualizer class object, and mBytes is FFT Data got from onFftDataCapture event. You can read more about FFT data returned by event here . This is what values I get #onFftDataCapture()# : Any idea, link would be helpful. Update for @Chris Stratton Now i am playing square wave at 1000 Hz file and took screen shot of that. What you suggest now? Updated after @ruhalde suggestion Now I am playing Frequency sweep (20-20000 Hz) file and this file generated following output.", 
+        "id": "7055335"
+    }, 
+    {
+        "text": "Yes, the application will run on lower SDKs as long as you do not use any class that was introduced in the later versions. For example, you can see that #Fragment# class was introduced in API level 11, so it would crash if you used it on a device with API level 8. You can use #AppCompat# libraries for backwards compatible versions of newer features. The support library has a Fragment class that is compatible till API level 1 (not sure). Compiling with the latest SDKs is advisable and advantageous as it has the optimizations for the newer platforms.", 
+        "id": "37962628"
+    }, 
+    {
+        "text": "The #Docs# imply that any value can be used with #ObjectAnimator# as long as you follow a naming convention: With respect to your question, View has the method #stRotation(float)# -- that gives you a hint it can be used. In particular here's how you would do it with a particular #TimeInterpolator# : You can read the docs for more details on the expectations of ObjectAnimator .", 
+        "id": "24473599"
+    }, 
+    {
+        "text": "You can create a drawable like this: Place the above in a \"background.xml\" file at the drawable folder. Then you can use it in your layout like this: You can use a background with all Layouts. I don't think there is an out-of-the-box way to do an alternate repeat, e.g. show one image at some places and another one in some others. If you want something like this, then you would probably need to implement your own View and override the onDraw method. You could use a #FrameLayout# to combine this background View with any other elements.", 
+        "id": "9771293"
+    }, 
+    {
+        "text": "Single Method Interface or Functional Interface. In Java 8 you can use @#FunctionalInterface# annotation on interfaces with a single abstract method. It is an informative annotation type used to indicate that an interface type declaration is intended to be a functional interface.", 
+        "id": "33686855"
+    }, 
+    {
+        "text": " Once you've got the input from the user (you did that quite nicely - and actually, that's not part of the assignment), it should be fairly simple to check if the string contains two Xes right behind each others (namely \"xx\" ). There's at least two ways you can do this: Simple: By using the method #String.contains(CharSequence)# , which checks if a String contains another String Overkill: By using regular expressions to check if your String matches a pattern like Only thing that's left to do is to define a public static method inside DoubleX with the name doublex , a String argument and a return type of boolean (see also: @JamesWierzba's comment ).", 
+        "id": "33105839"
+    }, 
+    {
+        "text": "I suggest you to use #yourView.bringToFront()# . bringToFront", 
+        "id": "38221823"
+    }, 
+    {
+        "text": "The answer is available in the #ExecutorService.shutdown()# Javadoc: If you want to wait for the threads to finish work you have the following options: get Future instances returned by #submit()# and call #get()# on every Future instance after calling shutdown on service call #awaitTermination# on service until it returns true instead of calling submit on service add your Runnable instances to a #java.util.List# and pass this list to the invokeAll method called on service", 
+        "id": "36376286"
+    }, 
+    {
+        "text": "#Camera.Parameters.setRecordingHint# and aspect ratio I've found some odd behavior around Camera.Parameters.setRecordingHint that I'd like to understand better. If I set it to true , the size of the preview image can come back different from what I pass to #setPreviewSize# . It depends on what size I set it to-- some aspect ratios work and some don't. See the screenshots below-- setPreviewSize has been set to 640x480 for both, but one has #setRecordingHint# to true and the other to false . I have the code that produces this effect on GitHub . Is this expected behavior? The docs for setRecordingHint don't indicate anything like this.", 
+        "id": "22054170"
+    }, 
+    {
+        "text": "tl;dr Time Zone For any given moment, the date varies around the globe by time zone. For example, at noon in Auckland NZ it is still \u201cyesterday\u201d in Montr\u00e9al Qu\u00e9bec. While the date may have rolled over in the time zone in your mind, the date may still be \u201cyesterday\u201d in the JVM\u2019s time zone. Always specify a time zone. If omitted, the JVM\u2019s current default time zone is implicitly applied. That default can be changed at any time during runtime by any code in the same JV M. Specify a proper time zone name in the format of continent/region , such as America/Montreal , Africa/Casablanca , or Pacific/Auckland . Never use the 3-4 letter abbreviation such as EST or IST as they are not true time zones, not standardized, and not even unique(!). #LocalDate# You are using the troublesome old date-time classes, now legacy, supplanted by the java.time classes. The LocalDate class represents a date-only value without time-of-day and without time zone. The date-time objects do not auto-update with the clock. Every time you want to check the date you must call LocalDate.of again to generate a fresh object with the date as it was at that moment of instantiation. About java.time The #java.time# framework is built into Java 8 and later. These classes supplant the troublesome old legacy date-time classes such as #java.util.Date# , #Calendar# , & #SimpleDateFormat# . The Joda-Time project, now in maintenance mode , advises migration to java.time. To learn more, see the Oracle Tutorial . And search Stack Overflow for many examples and explanations. Specification is JSR 310 . Where to obtain the java.time classes? Java SE 8 and SE 9 and later Built-in. Part of the standard Java API with a bundled implementation. Java 9 adds some minor features and fixes. Java SE 6 and SE 7 Much of the java.time functionality is back-ported to Java 6 & 7 in ThreeTen-Backport . Android The ThreeTenABP project adapts ThreeTen-Backport (mentioned above) for Android specifically. See How to use\u2026 . The ThreeTen-Extra project extends java.time with additional classes. This project is a proving ground for possible future additions to java.time. You may find some useful classes here such as Interval , YearWeek , YearQuarter , and more .", 
+        "id": "40312889"
+    }, 
+    {
+        "text": "Have you made sure to create your #AsyncTask# in the UI thread? While queueEvent provides an easy way for the UI thread to communicate with the rendering thread, there isn't an obvious solution for the other way given to you by the framework. As per this advice , passing a #Handler# (created in the UI thread) to the GL thread would allow the GL thread to send messages to the Handler . These messages would then be handled on the UI thread.", 
+        "id": "5293414"
+    }, 
+    {
+        "text": "if you set this theme to your dialog it will always be fullscreen to do so you can use this #setStyle(int,int)# method.", 
+        "id": "18537264"
+    }, 
+    {
+        "text": "If you are using #LocationManager# to determine which location services are available, you'll be able to tell if location services are turned on or off. For instance, with the following code: If the device Location Services are turned off, both #isGpsEnabled# and #isNetworkEnabled# will be false. If just GPS is turned off, but location services are turned on, isGpsEnabled would be false, but isNetworkEnabled would be true. If the device has location services turned on, including GPS, then both will be true.", 
+        "id": "32952252"
+    }, 
+    {
+        "text": " Instead of your #convertStreamToString()# method try using system provided #EntityUtils.toString(entity)# . IMPORTANT: do not catch generic Exception , this hides unchecked (runtime) exceptions. You might be hiding the JSONException that happens in #JSONObject constructor# . Update: You are calling #SendHttpPost# and not assigning result to variable: #HandleJSON.SendHttpPost(URL, jsonobj)#; should be:", 
+        "id": "7583545"
+    }, 
+    {
+        "text": "You are using #PendingIntent.getBroadcast()# - this triggers a broadcast. You need to use #PendingIntent.getService()# if you want to trigger a service.", 
+        "id": "35021964"
+    }, 
+    {
+        "text": "Presumably, the #LazyAdapter# derives from #BaseAdapter# and is backed by urlArray . If so, to have tweets appear on top, you need to add them to the beginning of the array. Use #add(0, newEntry)# to add to the beginning of the array and #notifyDataSetChanged()# to tell the adapter to post the updates . A couple of other notes: 1) Its unclear to me what you intend, especially seeing code like #twww.equals(twwwwwww)# . It seems like you're maintaining the old tweets and trying to only add new ones, but with unclear variable names like , I can only guess. 2) You shouldn't have to keep setting the adapter. Once the relationship between the listview, adapter, and backing array is set, you should only have to update the array and notify the adapter.", 
+        "id": "4792858"
+    }, 
+    {
+        "text": "Short answer is no, not directly, although it is possible to expose the data from application A via a #ContentProvider# and consume it from application B in a similar fashion. See here for more on ContentProvider s .", 
+        "id": "3412141"
+    }, 
+    {
+        "text": "You could tidy up your code but it does broadly what you might want it to do Note: 0 is not a negative or positive number. BTW: There is no %i , most likely you meant to use %d for decimal. I suggest you read the #Formatter Javadoc# if you want to know more on how to use the formatter.", 
+        "id": "27994681"
+    }, 
+    {
+        "text": "The Android equivalent to iOS #UITableView# is the #ListView# class. It is very powerful and can be filled with data from different sources depending on the type of #Adapter# you attach to it. You might want to have a look at this #ListView# and #ListActivity# tutorial .", 
+        "id": "12154531"
+    }, 
+    {
+        "text": "#AsyncTasks# are so easy to use. You have have to figure out the right way to use them and rememeber AsyncTask must be subclassed to be used. The subclass will override at least one method #doInBackground(Params...)#, and most often will override a second one. You can right click and add unimplement methods to see all. Here are the docs 's\nand dont forget you have to call your web request inside of the asynctask.", 
+        "id": "24816117"
+    }, 
+    {
+        "text": " You may have to consider a significantly different approach. Model individual instances of Card using an enum , as shown here . Java enum values are already Comparable to each other based on order. Rather than an array or #List#<Card> , model your deck and hands as a #Deque#<Card> . Because a Deque<Card> is a Collection you can use #shuffle()# . Your play loop will catch a #NoSuchElementException# , thrown when you attempt to access an empty hand or deck, as detailed in the Deque API. In this complete example , note how procedure Play draws a card from each hand, looping until one player wins. The terminating exception is caught by the caller, procedure Play_Game", 
+        "id": "30958359"
+    }, 
+    {
+        "text": "In java , you can specify the flags Pattern.#CASE_INSENSITIVE# and Pattern.#UNICODE_CASE# , i.e.: With the Pattern.#CASE_INSENSITIVE# : In another way, you can use the embedded flag expression. i.e.: The embedded flag expression can include #CASE_INSENSITIVE# , #MULTILINE# , #DOTALL# , #UNICODE_CASE# , #CANON_EQ# , #UNIX_LINES# , #LITERAL# , #UNICODE_CHARACTER_CLASS# and #COMMENTS# . Next, the list of flags that you can use with its corresponding embedded flag (if exists):: +-------------------------+------+\n| UNIX_LINES | (?d) |\n| CASE_INSENSITIVE | (?i) |\n| COMMENTS | (?x) |\n| MULTILINE | (?m) |\n| LITERAL | |\n| DOTALL | (?s) |\n| UNICODE_CASE | (?u) |\n| CANON_EQ | |\n| UNICODE_CHARACTER_CLASS | (?U) |\n+-------------------------+------+", 
+        "id": "44164923"
+    }, 
+    {
+        "text": "First a comment. This doesn't reproduce the behaviour of #join()# , if you add a sleep between #Thread.start()# and the synchronized block for a longer time than the other thread sleeps, the code hangs (while a join() wouldn't)... The answer to your question is well hidden in the Javadocs of #Thread.join()# I think that the call to this.notifyAll() that is mentioned in the Javadoc is native, as I cannot find it anywhere in the source code of Thread .", 
+        "id": "28925887"
+    }, 
+    {
+        "text": "Might be worth checking out the documentation for #onUserInteraction()# . Something like this would allow you to know how recently the user has interacted with the screen:", 
+        "id": "8934744"
+    }, 
+    {
+        "text": "How do you use #MediaControllerCompat# to control the current player? My app is not the media player. I just want to be able to control the current media player using the new #MediaControllerCompat# class. Currently I am using #MediaSessionManager# but want to upgrade to the new compat classes. How do I instantiate the #MediaControllerCompat# class when I don't have a token or #MediaSessionCompat# to instantiate it with? I am hoping to get some example code.", 
+        "id": "36419424"
+    }, 
+    {
+        "text": " Use the #LayoutTransistion# class to automatically animate child views whenever their visibility changes between VISIBLE and GONE . This class is available from API 11 onward. For sample code, check out samples that come with the sdk. Exact path is ApiDemos\\src\\com\\example\\android\\apis\\animation\\LayoutAnimationsHideShow.java Use #LayoutAnimationController# class to animate the views when they are added to and removed from a viewgroup. Here you have to hold a reference to a removed view, as you want to add it again later. This class is available in all versions of #Android. Sample# code path : ApiDemos\\src\\com\\example\\android\\apis\\view\\LayoutAnimation", 
+        "id": "11288818"
+    }
+]

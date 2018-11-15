@@ -1,0 +1,502 @@
+[
+	{
+		"api": "iterator",
+		"text": "It is a universal #iterator# as we can apply it to any #Collection# object. By using #Iterator#, we can perform both #read# and #remove# operations. It is improved version of #Enumeration# with additional functionality of remove-ability of a element. #Iterator# must be used whenever we want to enumerate elements in all #Collection# framework implemented interfaces like #Set#, #List#, #Queue#, #Deque# and also in all implemented classes of #Map# interface. #Iterator# is the only cursor available for entire #collection# framework. #Iterator# object can be created by calling #iterator()# method present in #Collection# interface.",
+		"url": "https://www.geeksforgeeks.org/iterators-in-java/"
+	},
+	{
+		"api": "hashCode",
+		"text": "Hashing is a fundamental concept of computer science. In Java, efficient hashing algorithms stand behind some of the most popular collections we have available \u2013 such as the #HashMap# (for an in-depth look at #HashMap#, feel free to check this article) and the #HashSet#. In this article, we\u2019ll focus on how #hashCode()# works, how it plays into collections and how to implement it correctly.",
+		"url": "https://www.baeldung.com/java-hashcode"
+	},
+	{
+		"api": "java.util.Vector",
+		"text": "The #Vector# class implements a growable array of objects. Vectors basically falls in legacy classes but now it is fully compatible with collections. #Vector# implements a dynamic array that means it can grow or shrink as required. Like an array, it contains components that can be accessed using an integer index. They are very similar to #ArrayList# but #Vector# is synchronised and have some legacy method which #collection# framework does not contain. It extends #AbstractList# and implements #List# interfaces.",
+		"url": "https://www.geeksforgeeks.org/java-util-vector-class-java/"
+	},
+	{
+		"api": "getChannel",
+		"text": "The #java.io.FileInputStream.getChannel()# returns the unique #FileChannel# object associated with this file input stream. The position of the returned channel the number of bytes read from the file so far.",
+		"url": "https://www.tutorialspoint.com/java/io/fileinputstream_getchannel.htm"
+	},
+	{
+		"api": "ImageView",
+		"text": "In Android, #ImageView# class is used to display an image file in application. Image file is easy to use but hard to master in Android, because of the various screen sizes in Android devices. An android is enriched with some of the best UI design widgets that allows us to build good looking and attractive UI based application.",
+		"url": "https://abhiandroid.com/ui/imageview"
+	},
+	{
+		"api": "awt",
+		"text": "The Abstract Window Toolkit (#AWT#) is Java's original platform-dependent windowing, graphics, and user-interface widget toolkit, preceding #Swing#. The #AWT# is part of the Java Foundation Classes (JFC) \u2014 the standard API for providing a graphical user interface (GUI) for a Java program. #AWT# is also the GUI toolkit for a number of Java ME profiles. For example, Connected Device Configuration profiles require Java runtimes on mobile telephones to support the Abstract Window Toolkit.",
+		"url": "https://en.wikipedia.org/wiki/Abstract_Window_Toolkit"
+	},
+	{
+		"api": "CopyOnWriteArrayList",
+		"text": "The design of the #CopyOnWriteArrayList# uses an interesting technique to make it thread-safe without a need for synchronization. When we are using any of the modify methods \u2013 such as #add()# or #remove()# \u2013 the whole content of the #CopyOnWriteArrayList# is copied into the new internal copy. Due to this simple fact, we can iterate over the list in a safe way, even when concurrent modification is happening.",
+		"url": "https://www.baeldung.com/java-copy-on-write-arraylist"
+	},
+	{
+		"api": "java.util.stream",
+		"text": "This example-driven tutorial gives an in-depth overview about Java 8 streams. When I first read about the #Stream# API, I was confused about the name since it sounds similar to #InputStream# and #OutputStream# from Java I/O. But Java 8 streams are a completely different thing. #Streams# are Monads, thus playing a big part in bringing functional programming to Java",
+		"url": "https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/"
+	},
+	{
+		"api": "ServerSocket",
+		"text": "In order to implement a Java server that listens for incoming connections from clients via TCP/IP, you need to use a #java.net.ServerSocket# . In case you prefer to use Java NIO instead of Java Networking (standard API), then you can also use a #ServerSocketChannel# instead of the #java.net.ServerSocket#.",
+		"url": "http://tutorials.jenkov.com/java-networking/server-sockets.html"
+	},
+	{
+		"api": "ColorDrawable",
+		"text": "A specialized #Drawable# that fills the #Canvas# with a specified color.A specialized #Drawable# that fills the #Canvas# with a specified color. Note that a #ColorDrawable# ignores the #ColorFilter#.\nIt can be defined in an XML file with the <color> element.",
+		"url": "https://developer.xamarin.com/api/type/Android.Graphics.Drawables.ColorDrawable/"
+	},
+	{
+		"api": "android.icu.math.BigDecimal",
+		"text": "I think (if below is wrong, someone correct me please!) When ICU added #BigDecimal#, there was no #BigDecimal# suppport in Java. The same code base is used for both ICU and Sun JDK. Both implementations refreshed several times in different timings. ICU keeps the class just for backward compatibility. The functionalities provided by #com.ibm.icu.math.BigDecimal# is equivalent to the JDK implementation.  I would say you have no reason to use the ICU implementation over JDK implementation.",
+		"url": "https://sourceforge.net/p/icu/mailman/message/21284480/"
+	},
+	{
+		"api": "Component.doLayout",
+		"text": "Adding multiple components in a #Panel#, #doLayout()#, causes the output to flicker. I am adding n custom components to a #Ext.Panel# and do #doLayout()# at the end, but they are all rendered sequentially, one after another. How can I show these components only after they are all rendered, avoiding the annoying flickering?",
+		"url": "https://www.sencha.com/forum/showthread.php?48754-Adding-multiple-components-in-a-Panel-doLayout()-causes-the-output-to-flicker"
+	},
+	{
+		"api": "graphics.Color",
+		"text": "Color can be controlled by accessing the #Color# class.  The #Color# class yields the class constants shown in the table below.  The expression #Color.red# gives the #Color# constant for red. Images are drawn in the current color until the color is changed.  Changing the color does not affect the color of previously drawn images.",
+		"url": "https://mathbits.com/MathBits/Java/Graphics/Color.htm"
+	},
+	{
+		"api": "CursorWindow",
+		"text": "A #buffer# containing multiple cursor rows. A #CursorWindow# is read-write when initially created and used locally. When sent to a remote process (by writing it to a #Parcel#), the remote process receives a read-only view of the cursor window. Typically the cursor window will be allocated by the producer, filled with data, and then sent to the consumer for reading.",
+		"url": "https://developer.xamarin.com/api/type/Android.Database.CursorWindow/"
+	},
+	{
+		"api": "widget.GridView",
+		"text": "The #GridView# widget is used to display data in a grid. It provides features like sorting, paging and also filtering the data.",
+		"url": "https://www.yiiframework.com/doc/api/2.0/yii-grid-gridview"
+	},
+	{
+		"api": "SurfaceHolder.lockCanvas",
+		"text": "#lockCanvas()# method returns null if the surface has not been created or otherwise cannot be edited. So better get the canvas in the #surfaceCreated# method. Also #lockCanvas()# holds a lock until the corresponding #unlockCanvasAndPost()# call, preventing #SurfaceView# from creating, destroying, or modifying the surface while it is being drawn. Call the #onDraw# method inside the synchronized block so that none other operation would occur while editing the pixels in the surface. ",
+		"url": "http://androidtutorialsandtips.blogspot.com/2012/01/overriding-ondraw-method-in-surfaceview.html"
+	},
+	{
+		"api": "getInstance",
+		"text": "What is the difference between new, #getInstance()# and #newInstance()# in java?",
+		"url": "https://www.quora.com/What-is-the-difference-between-new-getInstance-and-newInstance-in-java"
+	},
+	{
+		"api": "SearchView",
+		"text": "In Android, #SearchView# widget provide search user interface where users can enter a search query and then submit a request to search provider. It shows a list of query suggestions or results if available and allow the users to pick a suggestion or result to launch into.",
+		"url": "https://abhiandroid.com/ui/searchview"
+	},
+	{
+		"api": "java.io.FilterOutputStream",
+		"text": "#Java.io.FilterOutputStream# class is the superclass of all those classes which filters #output streams#. The #write()# method of #FilterOutputStream# Class filters the data and write it to the underlying stream, filtering which is done depending on the Streams.",
+		"url": "https://www.geeksforgeeks.org/java-io-filteroutputstream-class-java/"
+	},
+	{
+		"api": "Streams",
+		"text": "First a\u00a0#List#\u00a0of strings is created and three strings are added to it. Then a\u00a0#Stream#\u00a0of strings is obtained by calling the\u00a0#items.stream()#\u00a0method. This is similar to how you obtain an\u00a0#Iterator#\u00a0by calling the\u00a0#items.iterator()#\u00a0method, but a\u00a0#Stream#\u00a0is a different animal than an\u00a0#Iterator#.",
+		"url": "http://tutorials.jenkov.com/java-collections/streams.html"
+	},
+	{
+		"api": "getClassLoader",
+		"text": "#ClassLoader# is a useful class when dealing with dynamic resource loading. Common use is to load at runtime some configuration files or others kind of ressource : .properties, .xml, .png, .... It gives you a convenient access to the classpath of your application.",
+		"url": "http://jeecookbook.blogspot.com/2013/07/java-why-you-should-not-use.html"
+	},
+	{
+		"api": "hashCode",
+		"text": "An object\u2019s hash code allows algorithms and data structures to put objects into compartments, just like letter types in a printer\u2019s type case. The printer puts all \u201cA\u201d types into the compartment for \u201cA\u201d, and he looks for an \u201cA\u201d only in this one compartment. This simple system lets him find types much faster than searching in an unsorted drawer. That\u2019s also the idea of hash-based collections, such as #HashMap# and #HashSet#.",
+		"url": "https://eclipsesource.com/blogs/2012/09/04/the-3-things-you-should-know-about-hashcode/"
+	},
+	{
+		"api": "DecimalFormat",
+		"text": "The pattern parameter passed to the #DecimalFormat# constructor is the number pattern that numbers should be formatted according to. #applyPattern()# + #applyLocalizedPattern()#. As you can see, the #DecimalFormat# is created with a formatting pattern. You can change this pattern later using the #applyPattern()# or #applyLocalizedPattern()# method.",
+		"url": "http://tutorials.jenkov.com/java-internationalization/decimalformat.html"
+	},
+	{
+		"api": "getMediumDateFormat",
+		"text": "#DateFormat.getDateFormat# respects the devices #Date# and time settings - but #DateFormat.getMediumDateFormat# respects the devices locale (language) setting. Check the attached screenshots. Frustrating that #Medium# doesn't always do what it says! In the cases where I'm using #Medium#, I'm trying to avoid the ambiguity of short date formats.",
+		"url": "https://plus.google.com/+AdamSpeakman/posts/EPUGvsuMDnY"
+	},
+	{
+		"api": "Inet6Address",
+		"text": "This class represents IPv6 address and extends the #InetAddress# class. Methods of this class provide facility to represent and interpret IPv6 addresses.",
+		"url": "https://www.geeksforgeeks.org/java-net-inet6address-class-java/"
+	},
+	{
+		"api": "SQLOutput.writeBinaryStream",
+		"text": "The interface for an output stream used to write attributes of an SQL User Defined Type to the database. This interface is used for custom mapping of types and is called by the B22JDBC driver. It is not expected that this interface is used by applications. When an object which implements the #SQLData# interface is used as an argument to an SQL statement, the JDBC driver calls the method #SQLData.getSQLType# to establish the type of the SQL UDT that is being passed. The driver then creates an #SQLOutput# stream and passes it to the #SQLData#.writeSQL method, which in turn uses the appropriate #SQLOutput# writer methods to write the data from the #SQLData# object into the stream according to the defined mapping.",
+		"url": "http://people.apache.org/~djd/derby/publishedapi/java/sql/SQLOutput.html"
+	},
+	{
+		"api": "addFirst",
+		"text": "Adds the specified new node at the start of the #LinkedList<T>#.This function accepts a single parameter\u00a0element\u00a0as shown in the above syntax. The element specified by this parameter is appended at beginning of the list.",
+		"url": "https://www.geeksforgeeks.org/linkedlist-addfirst-method-in-java/"
+	},
+	{
+		"api": "ResultSet",
+		"text": "The SQL statements that read data from a database query, return the data in a result set. The SELECT statement is the standard way to select rows from a database and view them in a result set. The #java.sql.ResultSet# interface represents the result set of a database query. A #ResultSet# object maintains a cursor that points to the current row in the result set. The term \"result set\" refers to the row and column data contained in a #ResultSet# object.",
+		"url": "https://www.tutorialspoint.com/jdbc/jdbc-result-sets.htm"
+	},
+	{
+		"api": "java.util.concurrent.BlockingDeque.take",
+		"text": "The #BlockingDeque# interface in the #java.util.concurrent# class represents a deque which is thread safe to put into, and take instances from. In this text I will show you how to use this #BlockingDeque#. The #BlockingDeque# class is a #Deque# which blocks threads tring to insert or remove elements from the #deque#, in case it is either not possible to insert or remove elements from the #deque#. A #deque# is short for \"#Double Ended Queue#\". Thus, a #deque# is a queue which you can insert and take elements from, from both ends.",
+		"url": "http://tutorials.jenkov.com/java-util-concurrent/blockingdeque.html"
+	},
+	{
+		"api": "HttpsURLConnection",
+		"text": "The https protocol is similar to http, but https first establishes a secure channel using SSL/TLS sockets and then verifies the identity of the peer before requesting/receiving data. The #javax.net.ssl.HttpsURLConnection# extends the #java.net.HttpsURLConnection# class, and adds support for https-specific features. See the #java.net.URL#, #java.net.URLConnection#, #java.net.HttpURLConnection#, and #javax.net.ssl.HttpURLConnection# classes for more information about how https URLs are constructed and used. After obtaining a #HttpsURLConnection#, you can configure a number of http or https parameters before actually initiating the network connection using the method #URLConnection.connect#.",
+		"url": "https://www.ibm.com/support/knowledgecenter/en/SSYKE2_7.1.0/com.ibm.java.security.component.71.doc/security-component/jsse2Docs/httpsurlconnection.html"
+	},
+	{
+		"api": "NullPointerException",
+		"text": "#NullPointerException# is a #RuntimeException#. In Java, a special null value can be assigned to an object reference. #NullPointerException# is thrown when an application attempts to use an object reference that has the null value. ",
+		"url": "https://en.wikibooks.org/wiki/Java_Programming/Preventing_NullPointerException"
+	},
+	{
+		"api": "android.view.Window",
+		"text": "Abstract base class for a top-level window look and behavior policy. An instance of this class should be used as the top-level view added to the window manager. It provides standard UI policies such as a background, title area, default key processing, etc. The only existing implementation of this abstract class is #android.view.PhoneWindow#, which you should instantiate when needing a #Window#.",
+		"url": "https://developer.xamarin.com/api/type/Android.Views.Window/"
+	},
+	{
+		"api": "SortedSet",
+		"text": "The order of the sorting is either the natural sorting order of the elements (if they implement\u00a0#java.lang.Comparable#), or the order determined by a\u00a0#Comparator#\u00a0that you can give to the\u00a0#SortedSet#.",
+		"url": "http://tutorials.jenkov.com/java-collections/sortedset.html"
+	},
+	{
+		"api": "Arrays.copyOf",
+		"text": "The Java #Arrays.copyOf# Method is one of the Java Array Method which is used to copy the array content into new array of user specified length. In this article we will show you, How to copy the Java Array to new array with example. Before we get into the example, the basic syntax of the #Arrays.copyOf# in Java Programming language is as shown below.",
+		"url": "https://www.tutorialgateway.org/java-arrays-copyof-method/"
+	},
+	{
+		"api": "SQLiteCursor",
+		"text": "A #SQLite database cursor# is a object (control structure) that lets you traverse records in a database. #Cursors# facilitate subsequent processing in conjunction with the traversal, such as retrieval, addition and removal of database records. A variable becomes a cursor object by using the #SqlCursor()#, #SqlQuery()# or #SqlQueryRaw()# functions. #Cursors# are used to process individual rows returned by #SQLite# queries. Cursors enable manipulation of whole result-sets at once. In this scenario, a #cursor# enables the rows in a result-set to be processed sequentially.",
+		"url": "http://www.mintoris.com/basic19700.html"
+	},
+	{
+		"api": "soap.SOAPPart",
+		"text": "The\u00a0#javax.xml.soap.SOAPPart#\u00a0class is the container for the SOAP-specific portion of a #SOAPMessage# object.",
+		"url": "https://www.tutorialspoint.com/java/xml/javax_xml_soap_soappart.htm"
+	},
+	{
+		"api": "java.time.chrono.HijrahDate.atTime",
+		"text": "A date in the Hijrah calendar system. This implements #ChronoLocalDate# for the Hijrah calendar. The Hijrah calendar has a different total of days in a year than #Gregorian calendar#, and a month is based on the period of a complete revolution of the moon around the earth (as between successive new moons). The calendar cycles becomes longer and unstable, and sometimes a manual adjustment (for entering deviation) is necessary for correctness because of the complex algorithm. #HijrahDate# supports the manual adjustment feature by providing a configuration file. The configuration file contains the adjustment (deviation) data with following format.",
+		"url": "http://www.threeten.org/threetenbp/apidocs/org/threeten/bp/chrono/HijrahDate.html"
+	},
+	{
+		"api": "CollationElementIterator",
+		"text": "A #RuleBasedCollator# object creates an instance of the #CollationElementIterator# class to iterate through the characters of a string and determine their relative collation sequence. A #CollationElementIterator# object performs callbacks to the #RuleBasedCollator# that created it to get the information it needs to recognize groups of characters that are treated as single collation characters. For example, a #RuleBasedCollator# for a Spanish language locale would be set up to treat `ch' as a single letter. A #CollationElementIterator# object also gets information from its #RuleBasedCollator# that is used to determine the collation ordering priority for characters.",
+		"url": "http://web.deu.edu.tr/doc/oreily/java/fclass/ch16_04.htm"
+	},
+	{
+		"api": "java.nio.file.Path.equals",
+		"text": "The #DateTimeFormatter# class contains a set of predefined (constant) instances which can parse and format dates from standard date formats. This saves you the trouble of defining a date format for a #DateTimeFormatter#. The #DateTimeFormatter# class contains the following predefined instances:",
+		"url": "http://tutorials.jenkov.com/java-date-time/datetimeformatter.html"
+	},
+	{
+		"api": "java.awt.event",
+		"text": "The #Event# classes represent the event. Java provides us various #Event# classes but we will discuss those which are more frequently used. It is the root class from which all event state objects shall be derived. All #Events# are constructed with a reference to the object, the source, that is logically deemed to be the object upon which the #Event# in question initially occurred upon.This class is defined in #java.util# package.",
+		"url": "https://www.tutorialspoint.com/awt/awt_event_classes.htm"
+	},
+	{
+		"api": "javax.swing.JComponent.isOpaque()",
+		"text": "The following are\u00a0Jave code examples for showing how to use\u00a0#isOpaque()#\u00a0of the\u00a0#javax.swing.Jcomponent#\u00a0class. You can vote up the examples you like. Your votes will be used in our system to get more good examples.",
+		"url": "https://www.programcreek.com/java-api-examples/?class=javax.swing.JComponent&method=isOpaque"
+	},
+	{
+		"api": "javax.swing.JComponent.getWidth()",
+		"text": "I've question that is related to methods #getWidth()# and #getHeight()# of class #Jpanel#. Actually I was trying to draw rainbow using #fillArc()# method, then I already created my #JFrame# object that will hold this #JPanel# object and set its size to 400*400",
+		"url": "https://www.java-forums.org/new-java/63721-getwidth-getheight-jpanel.html"
+	},
+	{
+		"api": "java.lang.AssertionError",
+		"text": "Making our way through our detailed\u00a0Java #Exception# Handling\u00a0series we arrive at the\u00a0#AssertionError#\u00a0that we\u2019ll be going over today. As with many other languages, the\u00a0#AssertionError#\u00a0in Java is thrown when an\u00a0#assert#\u00a0statement fails (i.e. the result is false).",
+		"url": "https://airbrake.io/blog/java-exception-handling/assertionerror-java"
+	},
+	{
+		"api": "java.net.SocketPermission",
+		"text": "you want to launch a Java #Applet# and you get an error like this\u00a0#AccessControlException#\u00a0=>\u00a0#java.net.SocketPermission#\u201d \u201c192.168.100.10:8888\u201d \u201cconnect,resolve.",
+		"url": "https://michlstechblog.info/blog/java-error-accesscontrolexception-java-net-socketpermission-192-168-100-108888-connectresolve/"
+	},
+	{
+		"api": "equals()",
+		"text": "The\u00a0#ArrayList#\u00a0iterates all its elements and execute\u00a0\"123\".#equals#(element)\u00a0to determine if the element is equal to the parameter object \"123\". It is the\u00a0#String.equals()#\u00a0implementation that determines if two strings are equal.",
+		"url": "http://tutorials.jenkov.com/java-collections/hashcode-equals.html"
+	},
+	{
+		"api": "android.widget.RadioButton",
+		"text": "In Android, you can use \u201c#android.widget.RadioButton#\u201d class to render radio button, and those radio buttons are usually grouped by\u00a0#android.widget.RadioGroup#. If\u00a0#RadioButtons#\u00a0are in group, when one\u00a0#RadioButton#\u00a0within a group is selected, all others are automatically deselected.",
+		"url": "https://www.mkyong.com/android/android-radio-buttons-example/"
+	},
+	{
+		"api": "javax.swing.JTree",
+		"text": "The above class can be constructed with the specified #Jtree#, and its method used to get the expanded state as a #String# (which can, for instance, be saved to a file for later use), and restore the state from a #String#.",
+		"url": "http://www.algosome.com/articles/save-jtree-expand-state.html"
+	},
+	{
+		"api": "java.lang.StringBuffer.length()",
+		"text": "The\u00a0#length#\u00a0is the character count of the sequence of characters currently represented by\u00a0#StringBuffer#.\u00a0 The\u00a0#capacity#\u00a0is the amount of storage available for newly inserted characters, beyond which an allocation will occur.",
+		"url": "http://java.meritcampus.com/core-java-topics/java-stringbuffer-length-and-capacity-methods"
+	},
+	{
+		"api": "javax.swing.SwingConstants.SOUTH",
+		"text": "There are 7 #layout# managers built into Java. Most UIs are built using some combination of them, typically by nesting #layout# managers. The most commonly used layouts are #FlowLayout#, #BorderLayout# and #BoxLayout#.",
+		"url": "https://en.wikibooks.org/wiki/Java_Swings/Swing_Layouts"
+	},
+	{
+		"api": "java.util.Locale",
+		"text": "The\u00a0#java.util.Locale#\u00a0class is used to represent a \"geographical, political or cultural\" region to localize a given text, number, date or operation to. A\u00a0#Locale#\u00a0object may thus contain a country, region, language, and also a variant of a language, for instance a dialect spoken in a certain region of a country, or spoken in a different country than the country from which the language originates.",
+		"url": "http://tutorials.jenkov.com/java-internationalization/locale.html"
+	},
+	{
+		"api": "android.content.Intent",
+		"text": "Android 7.0 Nougat\u00a0introduced some\u00a0file system permission changes\u00a0in order to improve security. If you\u2019ve already updated your app to\u00a0targetSdkVersion\u00a024 (or higher) and you\u2019re passing a\u00a0file:///\u00a0#URI#\u00a0outside your package domain through an\u00a0#Intent#, then what you\u2019ll get is a\u00a0#FileUriExposedException#\u00a0.",
+		"url": "https://proandroiddev.com/sharing-files-though-intents-are-you-ready-for-nougat-70f7e9294a0b"
+	},
+	{
+		"api": "java.time.OffsetTime",
+		"text": "While\u00a0#LocalDateTime#\u00a0is rather straightforward since it only captures a date and time reference,\u00a0#OffsetDateTime#\u00a0is more problematic because it only captures the offset, but not the time zone rules such as DST (Daylight Saving Time) or other rules defined by ZoneId and typically supported by\u00a0#ZonedDateTime#.",
+		"url": "https://vladmihalcea.com/whats-new-in-jpa-2-2-java-8-date-and-time-types/"
+	},
+	{
+		"api": "java.lang.ThreadGroup",
+		"text": "Even though thread groups are useful for keeping threads organized, programmers seldom benefit from their use because many of the methods of the\u00a0#ThreadGroup#\u00a0class (for example,\u00a0#allowThreadSuspension()#,\u00a0#resume()#,\u00a0#stop()#, and\u00a0#suspend()#) are deprecated. Furthermore, many nondeprecated methods are obsolete in that they offer little desirable functionality. Ironically, a few\u00a0#ThreadGroup#\u00a0methods are not even\u00a0thread-safe\u00a0[Bloch 2001].",
+		"url": "https://wiki.sei.cmu.edu/confluence/display/java/THI01-J.+Do+not+invoke+ThreadGroup+methods"
+	},
+	{
+		"api": "android.animation.ValueAnimator",
+		"text": "#ValueAnimator# is the core of the Property Animation system. It provides a timing engine which calculates the animation values. It also allows us to get notified at every animation frame through #ValueAnimator.AnimatorUpdateListener# interface.",
+		"url": "https://www.roman10.net/2013/05/23/android-property-animation-valueanimator/"
+	},
+	{
+		"api": "java.nio.file.WatchEvent",
+		"text": "To use the\u00a0#WatchService#\u00a0features, the first step is to create a\u00a0#WatchService#\u00a0instance using the\u00a0#java.nio.file.FileSystems#\u00a0class",
+		"url": "https://www.baeldung.com/java-nio2-watchservice"
+	},
+	{
+		"api": "android.provider.CalendarContract",
+		"text": "Of course, similar to the\u00a0#ContactsContract\u00a0ContentProvider#, the\u00a0#CalendarContract\u00a0ContentProvider#\u00a0is severely lacking in documentation, and anything not documented is subject to change.",
+		"url": "https://commonsware.com/Android/previews/the-calendarcontract-provider"
+	},
+	{
+		"api": "android.util.JsonReader",
+		"text": "The #JSONObject# class has been in Android since the very beginning (API level 1), is easy to use, and is probably the developer\u2019s default choice for their #JSON# parsing needs. However, the #JSONObject# class is like DOM; it reads the whole object into memory. On mobile devices with limited resources that\u2019s not always the best idea.",
+		"url": "https://content.pivotal.io/blog/parsing-json-data-efficiently-on-android-jsonreader"
+	},
+	{
+		"api": "java.util.zip",
+		"text": "In addition to the information stored in\u00a0#ArchiveEntry#\u00a0a\u00a0#ZipArchiveEntry#\u00a0stores internal and external attributes as well as extra fields which may contain information like Unix permissions, information about the platform they've been created on, their last modification time and an optional comment.",
+		"url": "https://commons.apache.org/proper/commons-compress/zip.html"
+	},
+	{
+		"api": "javax.net.ssl.SSLContext",
+		"text": "So how can we override just a single https URL? Looking at\u00a0#javax.net.ssl.HttpsURLConnection#\u00a0again we see instance method for\u00a0#setSSLSocketFactory()#, but we can't instantiate\u00a0#HttpsURLConnection#\u00a0object directly! It took me some digging to realized that the\u00a0#java.net.URL#\u00a0is actually an factory class for its implementation!\u00a0",
+		"url": "https://dzone.com/articles/how-setup-custom"
+	},
+	{
+		"api": "android.os.PowerManager.isScreenOn()",
+		"text": "#getWindow()#.#addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)#\u00a0should be called before\u00a0#setContentView(R.layout.activity_main)#.",
+		"url": "https://www.codesd.com/item/android-isscreenon-nullpointerexception.html"
+	},
+	{
+		"api": "java.time",
+		"text": "#LocalDate#/#LocalTime# and #LocalDateTime# classes simplify the development where #timezones# are not required. Let's see them in action.",
+		"url": "https://www.tutorialspoint.com/java8/java8_datetime_api.htm"
+	},
+	{
+		"api": "android.app.LocalActivityManager",
+		"text": "In the world of Android one of my biggest pain points over the years is that often you need access to the apps current #Activity# when writing libraries or abstracting out common functionality. For years I have been hacking around the issue by setting special Intent flags or more than likely creating a #BaseActivity# with a static \u201c#CurrentActivity#\u201d that is set when the page is started up. While this works short term for MY app, it completely falls down when you want to create Plugins or abstract an API into an interface of some sort.\u00a0",
+		"url": "https://montemagno.com/access-the-current-android-activity-from-anywhere/"
+	},
+	{
+		"api": "android.widget.TextView",
+		"text": "As we have now access to #TextView# all we have to do it is\u00a0just use #setText()# method with a new text as argument\u00a0.",
+		"url": "http://android4beginners.com/2013/06/lesson-1-3-how-to-modify-textview-in-java-code-findviewbyid-settext-and-gettext-methods/#more-280"
+	},
+	{
+		"api": "javax.management.StringValueExp.StringValueExp()",
+		"text": "The\u00a0#javax.management.openmbean.OpenType#\u00a0class and its subclasses have also been generified to allow type constraints to be expressed.\u00a0\u00a0#OpenMBeanAttributeInfoSupport#\u00a0and\u00a0#OpenMBeanParameterInfoSupport#\u00a0acquire type constraints in their constructors such that the default or legal values must be of the correct type. The\u00a0#StandardMBean#\u00a0constructor\u00a0likewise acquires a type constraint so that the resource parameter must implement the interface specified by the interface parameter.",
+		"url": "https://www.math.uni-hamburg.de/doc/java/jdk/docs/technotes/guides/jmx/enhancements.html"
+	},
+	{
+		"api": "javax.management.StandardMBean",
+		"text": "The key to providing additional metadata above and beyond what is normally associated with a #Standard Mbean# is use of the class\u00a0#javax.management.StandardMBean#.\u00a0",
+		"url": "https://www.javaworld.com/article/2072242/extraordinary-standard-mbeans.html"
+	},
+	{
+		"api": "javax.swing.tree.DefaultTreeSelectionModel",
+		"text": "When I try to remove the node differently - using the methods in #DefaultMutableTreeNode#, I still get this exception in the #treeModel.nodesWereRemoved()# call.",
+		"url": "https://coderanch.com/t/342368/java/NullPointerException-TreeModel-removeNodeFromParent"
+	},
+	{
+		"api": "android.view.Choreographer.getInstance()",
+		"text": "We've got some crash reports indicate that\u00a0#Choreographer.getInstance()#\u00a0may throw a #NullPointerException# inside framework. The stack as follows:",
+		"url": "https://github.com/google/ExoPlayer/issues/3144"
+	},
+	{
+		"api": "java.text.NumberFormat",
+		"text": "The\u00a0#NumberFormat#\u00a0class can format a number in a particular locale's predefined format.\u00a0The\u00a0#DecimalFormat#\u00a0class can format a number in a customized format for a particular locale.\u00a0",
+		"url": "http://www.java2s.com/Tutorials/Java/Java_Format/0040__Java_Number_Format_Class.htm"
+	},
+	{
+		"api": "java.util.TimeZone.getRawOffset()",
+		"text": "The\u00a0#getRawOffset()#\u00a0method is used to get the amount of time in milliseconds to add to UTC to get standard time in this time zone. Following is the declaration for #java.util.TimeZone.getRawOffset()# method.",
+		"url": "https://www.tutorialspoint.com/java/util/timezone_getrawoffset.htm"
+	},
+	{
+		"api": "SortedMap",
+		"text": "The order of the sorting is either the natural sorting order of the elements (if they implement\u00a0#java.lang.Comparable#), or the order determined by a\u00a0#Comparator#\u00a0that you can give to the\u00a0#SortedSet#.",
+		"url": "http://tutorials.jenkov.com/java-collections/sortedmap.html"
+	},
+	{
+		"api": "org.omg.CORBA.DoubleHolder",
+		"text": "Java with JDBC datatypes\u00a0Predefined Jaguar datatypes and IDL base types are mapped to types in the\u00a0#java.lang#\u00a0and\u00a0#java.sql#\u00a0packages. User-defined exceptions are not supported. User-defined IDL parameter and return types are mapped to Java datatypes using the standard CORBA IDL-to-Java mappings. Components that were developed for Jaguar version 1.1 should use these type mappings. To use these type mappings, specify Java/JDBC as the component type in the Jaguar Manager Component Properties dialog box.",
+		"url": "http://www.upi.pr.it/docs/jagpg/jagpgp73.htm"
+	},
+	{
+		"api": "android.preference.ListPreference",
+		"text": "#ListPreference# is a preference #listview# widget used to store a value in shared preference. The key of the #ListPreference# specified in the xml resource file is used to retrieve the value from the shared preference. In this article, we are creating an application which embeds a #ListPreference# widget in an activity using #PreferenceFragment#.",
+		"url": "http://wptrafficanalyzer.in/blog/embedding-listpreference-in-an-activity-using-preferencefragment-in-android/"
+	},
+	{
+		"api": "android.opengl",
+		"text": "You can ask your view not to be redrawn every time but only when it\u2019s \u201cdirty\u201d. To achieve this, call\u00a0#GLSurfaceView.setRenderMode(int)#\u00a0with the parameter\u00a0#RENDERMODE_WHEN_DIRTY#. Then, call\u00a0#GLSurfaceView.requestRender()#\u00a0to specify your view is dirty.",
+		"url": "https://medium.com/@xzan/opengl-a-noobs-guide-for-android-developers-5eed724e07ad"
+	},
+	{
+		"api": "javax.swing.JProgressBar.getOrientation()",
+		"text": "Technically speaking, a\u00a0#JProgressBar#(in the API reference documentation)\u00a0displays an integer value within a bounded interval. Realistically speaking, you use a\u00a0#JProgressBar#\u00a0to display the progress of a long-running task.\u00a0#JProgressBar#\u00a0is for display purposes only. To allow the user to set a bounded integer value, use a\u00a0slider.",
+		"url": "http://mat.unicam.it/piergallini/home/materiale/gc/java/ui/swing/progressbar.html"
+	},
+	{
+		"api": "android.database.DatabaseUtils",
+		"text": "In order to create a database you just need to call this method #openOrCreateDatabase# with your database name and mode as a parameter. It returns an instance of SQLite database which you have to receive in your own object.",
+		"url": "https://www.tutorialspoint.com/android/android_sqlite_database.htm"
+	},
+	{
+		"api": "java.math.BigDecimal",
+		"text": "To set the number of digits after the decimal, use the .#setScale(scale)# method. However, it is good practice to also specify the rounding mode along with the scale by using .#setScale(scale, roundingMode)#. The rounding mode specifies how to round the number.",
+		"url": "http://www.opentaps.org/docs/index.php/How_to_Use_Java_BigDecimal:_A_Tutorial"
+	},
+	{
+		"api": "android.view.LayoutInflater",
+		"text": "It\u2019s easy to get comfortable with boilerplate setup code, so much so that we gloss over the finer details. I\u2019ve experienced this with\u00a0#LayoutInflater#\u00a0(which coverts an XML layout file into corresponding #ViewGroups# and #Widgets#) and the way it inflates #Views# inside #Fragment#\u2019s #onCreateView()# method. Upon looking for clarification in Google documentation and discussion on the rest of the web, I noticed that many others were not only unsure of the specifics of #LayoutInflater#\u2019s\u00a0#inflate()#\u00a0method, but were completely misusing it.",
+		"url": "https://www.bignerdranch.com/blog/understanding-androids-layoutinflater-inflate/"
+	},
+	{
+		"api": "android.webkit.WebChromeClient",
+		"text": "Advance Configuration for #WebViewClient# or #WebChromeClient# class. You will need to implement your own customized override methods. You can do almost everything here :). You can install\u00a0tns-platform-declarations\u00a0for avoiding typescript error. Please check the demo for more details.",
+		"url": "https://market.nativescript.org/plugins/nativescript-android-advanced-webview"
+	},
+	{
+		"api": "java.util.List",
+		"text": "The\u00a0#java.util.List#\u00a0interface is a subtype of the\u00a0#java.util.Collection#\u00a0interface. It represents an ordered list of objects, meaning you can access the elements of a\u00a0#List#\u00a0in a specific order, and by an index too. You can also add the same element more than once to a\u00a0#List#.",
+		"url": "http://tutorials.jenkov.com/java-collections/list.html"
+	},
+	{
+		"api": "android.view.MenuItem",
+		"text": "The only requirement of us is that we define a title text and icon drawable within our menu layout file, inflate this layout in\u00a0#onCreateOptionsMenu()#\u00a0and respond to clicks in\u00a0#onOptionsItemSelected()#. If you\u2019ve ever worked with menu items before then this is nothing new.",
+		"url": "https://stablekernel.com/using-custom-views-as-menu-items/"
+	},
+	{
+		"api": "javax.swing.JSlider",
+		"text": "By default, spacing for major and minor tick marks is zero. To see tick marks, you must explicitly set the spacing for either major or minor tick marks (or both) to a non-zero value and call the\u00a0#setPaintTicks(true)#\u00a0method. However, you also need labels for your tick marks. To display standard, numeric labels at major tick mark locations, set the major tick spacing, then call the\u00a0#setPaintLabels(true)#\u00a0method. The example program provides labels for its slider in this way. But you are not constrained to using only these labels.\u00a0Customizing #Labels# on a #Slider#\u00a0shows you how to customize slider labels. In addition, a slider feature allows you to set a font for the\u00a0#JSlider#\u00a0component.",
+		"url": "https://docs.oracle.com/javase/tutorial/uiswing/components/slider.html"
+	},
+	{
+		"api": "android.net.VpnService",
+		"text": "There are two primary methods in this class:\u00a0#prepare(Context)#\u00a0and\u00a0#establish()#. The former deals with user action and stops the VPN connection created by another application. The latter creates a VPN interface using the parameters supplied to the\u00a0#VpnService.Builder#. An application must call\u00a0#prepare(Context)#\u00a0to grant the right to use other methods in this class, and the right can be revoked at any time.",
+		"url": "https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/net/VpnService.html"
+	},
+	{
+		"api": "javax.swing.JComboBox",
+		"text": "By default, a\u00a0#JComboBox#\u00a0component is created in read-only mode, which means the user can only pick one item from the fixed options in the drop-down list. What if we want to allow the user to provide his own option besides the fixed ones? Well, in this case we can simply use the\u00a0#setEditable()#\u00a0method to make the combo box editable:",
+		"url": "https://www.codejava.net/java-se/swing/jcombobox-basic-tutorial-and-examples"
+	},
+	{
+		"api": "java.nio.file.Files",
+		"text": "The #Java NIO\u00a0Files#\u00a0class (#java.nio.file.Files#) provides several methods for manipulating files in the file system. This #Java NIO\u00a0Files#\u00a0tutorial will cover the most commonly used of these methods. The\u00a0#Files# class contains many methods, so check the JavaDoc too, if you need a method that is not described here. The\u00a0#Files#\u00a0class just might have a method for it still.",
+		"url": "http://tutorials.jenkov.com/java-nio/files.html"
+	},
+	{
+		"api": "android.hardware.Camera.AutoFocusCallback",
+		"text": "Devices that do not support auto-focus will receive a \"fake\" callback to this interface. If your application needs auto-focus and should not be installed on devices\u00a0without\u00a0auto-focus, you must declare that your app uses the\u00a0#android.hardware.camera.autofocus#\u00a0feature, in the\u00a0<uses-feature>\u00a0manifest element.",
+		"url": "https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/hardware/Camera.AutoFocusCallback.html"
+	},
+	{
+		"api": "java.lang.IllegalAccessError.IllegalAccessError()",
+		"text": "The\u00a0#IllegalAccessError#\u00a0extends the\u00a0#IncompatibleClassChangeError#, which is thrown when an incompatible class change has occurred to some class definition.",
+		"url": "https://examples.javacodegeeks.com/java-basics/exceptions/java-lang-illegalaccesserror-how-to-resolve-illegal-access-error/"
+	},
+	{
+		"api": "String",
+		"text": "This #getString# method is specified by the #getString# method in the #java.sql.CallableStatement# interface.",
+		"url": "https://docs.microsoft.com/en-us/sql/connect/jdbc/reference/getstring-method-java-lang-string?view=sql-server-2017"
+	},
+	{
+		"api": "java.lang.String ",
+		"text": "A Java\u00a0#String#\u00a0contains an immutable sequence of Unicode characters. Unlike C/C++, where string is simply an array of\u00a0char, A Java\u00a0#String#\u00a0is an object of the class\u00a0#java.lang#.",
+		"url": "http://www.ntu.edu.sg/home/ehchua/programming/java/j3d_string.html"
+	},
+	{
+		"api": "Integer",
+		"text": "The\u00a0#java.lang.Integer#\u00a0class wraps a value of the primitive type int in an object. An object of type #Integer# contains a single field whose type is int.",
+		"url": "https://www.tutorialspoint.com/java/lang/java_lang_integer.htm"
+	},
+	{
+		"api": "PipedInputStream",
+		"text": "The\u00a0#read()#\u00a0method of a\u00a0#PipedInputStream#\u00a0returns an int which contains the byte value of the byte read. If the\u00a0#read()#\u00a0method returns -1, there is no more data to read in the stream, and it can be closed. That is, -1 as int value, not -1 as byte value. There is a difference here!",
+		"url": "http://tutorials.jenkov.com/java-io/pipedinputstream.html"
+	},
+	{
+		"api": "java.rmi.activation.ActivationDesc",
+		"text": "An\u00a0#ActivationDesc#\u00a0contains the information necessary to activate an object. It contains the object's activation group identifier, the class name for the object, a codebase path (or URLs) from which the object's code can be loaded, and a\u00a0#MarshalledObject#\u00a0that may contain object-specific initialization data used during each activation.",
+		"url": "http://www.cs.mun.ca/java-api-1.5/guide/rmi/spec/rmi-activation4.html"
+	},
+	{
+		"api": "android.text.StaticLayout",
+		"text": "The Android\u00a0#Canvas#\u00a0offers a variety of drawing functions for implementing custom graphics in your app. A common use of\u00a0#Canvas#\u00a0is to draw text to a given region of a custom\u00a0#View#,\u00a0#Drawable#,\u00a0#Bitmap#, etc.",
+		"url": "https://medium.com/over-engineering/drawing-multiline-text-to-canvas-on-android-9b98f0bfa16a"
+	},
+	{
+		"api": "java.io.RandomAccessFile",
+		"text": "In this tutorial we are going to see how use\u00a0#RandomAccessFile#\u00a0in order to to read an write data to a #File# in random positions. The\u00a0#RandomAccessFile#\u00a0class treats the file as an array of Bytes. And you can write your data in any position of the #Array#. To do that, it uses a pointer that holds the current position (you can think of that pointer like a cursor in a text editor\u2026).",
+		"url": "https://examples.javacodegeeks.com/core-java/io/randomaccessfile/java-randomaccessfile-example/"
+	},
+	{
+		"api": "android.content.ContextWrapper",
+		"text": "Since #Application# extends #ContextWrapper#, there isn't much to look at over there either since it doesn't override the implementation provided by #ContextWrapper#. This means that the implementation for #Context# is provided by the OS and is hidden from the API.\u00a0",
+		"url": "https://medium.com/@ali.muzaffar/which-context-should-i-use-in-android-e3133d00772c"
+	},
+	{
+		"api": "java.util.Arrays",
+		"text": "The implementation of\u00a0#hashCode#\u00a0will give us the other part of the\u00a0#equals#/#hashCode#\u00a0contract that is recommended for Java objects.\u00a0 We use\u00a0#hashCode#\u00a0to compute an integer based on the contents of the array:",
+		"url": "https://www.baeldung.com/java-util-arrays"
+	},
+	{
+		"api": "NavigableSet",
+		"text": "In Java 6 there is only one implementation of the\u00a0#NavigableSet#\u00a0interface in the\u00a0#java.util#\u00a0package:\u00a0#java.util.TreeSet#\u00a0There is an implementation in the\u00a0#java.util.concurrent#\u00a0package but that is outside the scope of this trail.",
+		"url": "http://tutorials.jenkov.com/java-collections/navigableset.html"
+	},
+	{
+		"api": "android.location.Address",
+		"text": "The main class in fused location provider API is #FusedLocationProviderClient#. You can get #FusedLocationProviderClient# object by calling #getFusedLocationProviderClient# method on #LocationServices#. #FusedLocationProviderClient# has #getLastLocation# and #requestLocationUpdates# methods which can be used to location. Method #getLastLocation# gives last know location. If you want location updates as device location changes, you need to use #requestLocationUpdates#.",
+		"url": "http://www.zoftino.com/get-current-location-address-android"
+	},
+	{
+		"api": "android.transition.CircularPropagation",
+		"text": "The magic lies in the\u00a0#Transition.setPropagation(TransitionPropagation)# function. A\u00a0#TransactionPropagation#\u00a0holds the logic for offsetting the start delays of the individual targets within the transition.",
+		"url": "https://proandroiddev.com/propagating-transitions-1a18b647ba71"
+	},
+	{
+		"api": "java.awt ",
+		"text": "#JFrame#\u00a0and\u00a0#JPanel#\u00a0are classes belonging to\u00a0#javax.swing# libraries. #Swing# library is created on top of the #AWT# library stack.\u00a0#JFrame#\u00a0is a window like container which holds the various components together in a window.\u00a0#JPanel#\u00a0is a container which fits inside a\u00a0#JFrame#\u00a0and helps in grouping of components.",
+		"url": ""
+	},
+	{
+		"api": "java.util.GregorianCalendar",
+		"text": "Calling\u00a0#toZonedDateTime()#\u00a0we can convert the #calendar# object into a\u00a0#ZonedDateTime#\u00a0object that represents the same point on the timeline as this\u00a0#GregorianCalendar#.",
+		"url": "https://www.baeldung.com/java-gregorian-calendar"
+	}
+]

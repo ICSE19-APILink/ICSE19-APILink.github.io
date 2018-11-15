@@ -1,0 +1,402 @@
+[
+    {
+        "text": "Not sure if any of this is related to your problem, but here goes: I wouldn't call #getSupportLoaderManager().initLoader()# before you create your adapters. Maybe it works, but if #onLoadFinished()# gets called before the adapters are created, it seems to me like it could cause issues. Why are you calling getContentResolver().notifyChange() in your #setScreen()# method? As far as I understand, notifyChange() is for notification that data in the content provider has changed, but it doesn't look to me like you're changing anything. From my limited use of content providers, I only call ContentResolver.notifyChange() within the content provider class itself. See its use here for an example: http://developer.android.com/resources/samples/NotePad/src/com/example/android/notepad/NotePadProvider.html This is really nitpicky, but in #onCreateLoader()# you could probably do something like this: return new #CursorLoader#( instead of creating unused references. Lastly, to get to the actual question, the only time I've seen that error is when I have an open cursor that I haven't closed. Since #CursorLoader# handles the cursor life cycle, I'd look to make sure there isn't anywhere else in your app where you have an open cursor, like from calling #getContentResolver().query()# or querying a database directly. If none of the above works, maybe you could split the data you're handling with separate #CursorLoaders# into separate #CursorProviders#.", 
+        "id": "8857179"
+    }, 
+    {
+        "text": "You can solve your issue with setTargetFragment() and getParentFragment() to your dialog Fragment. Call dialog from your #ViewPager# fragment , where you want execute a fragment method. And inside of your DeleteGameBoardDialogFragment , call below code IMPT: make sure you call dialog from a fragment only and not from activity. Why If you call from activity getParentFragment() returns null . Happy_Coding;", 
+        "id": "36300638"
+    }, 
+    {
+        "text": "First, for a pure memory solution I would probably use a HashSet<Integer> or HashMap<Integer> . It should give far better performance for contains / containsKey . Second, SQLite has its own memory caching , so you should not assume it will naively read from disk every time.", 
+        "id": "2796299"
+    }, 
+    {
+        "text": "If I were using default Android stuff I'd go with a LevelListDrawable . Just set up your drawable in an xml file like this: Then set that as your background. As the player progresses just call #backgroundDrawable.setLevel(level)#; and it will switch to the drawable associated with that level. Then, as you add levels, you'll just need to add a line in the xml file.", 
+        "id": "21141825"
+    }, 
+    {
+        "text": "As you want to build a table of checkboxes (and associated text labels, I assume), I would suggest you use TableLayout .", 
+        "id": "15252549"
+    }, 
+    {
+        "text": "For prepared SQLite statements in Android there is SQLiteStatement . Prepared statements help you speed up performance (especially for statements that need to be executed multiple times) and also help avoid against injection attacks. See this article for a general discussion on prepared statements. SQLiteStatement is meant to be used with SQL statements that do not return multiple values. (That means you wouldn't use them for most queries.) Below are some examples: Create a table The execute() method does not return a value so it is appropriate to use with CREATE and DROP but not intended to be used with SELECT, INSERT, DELETE, and UPDATE because these return values. (But see this question .) Insert values Note that the executeInsert() method is used rather than execute() . Of course, you wouldn't want to always enter the same things in every row. For that you can use bindings . Usually you use prepared statements when you want to quickly repeat something (like an INSERT) many times. The prepared statement makes it so that the SQL statement doesn't have to be parsed and compiled every time. You can speed things up even more by using #transactions#. This allows all the changes to be applied at once. Here is an example: Check out these links for some more good info on transactions and speeding up database inserts. Atomic Commit In SQLite (Great in depth explanation, go to Part 3) Database transactions Android SQLite bulk insert and update example Android SQLite Transaction Example with INSERT Prepared Statement Turbocharge your SQLite inserts on Android https://stackoverflow.com/a/8163179/3681880 Update rows This is a basic example. You can also apply the concepts from the section above. Note: #executeUpdateDelete()# can also be used for DELETE statements and was introduced in API 11. See this Q&A . Query Normally when you run a query, you want to get a cursor back with lots of rows. That's not what SQLiteStatement is for, though. You don't run a query with it unless you only need a simple result, like the number of rows in the database, which you can do with simpleQueryForLong() Usually you will run the #query()# method of SQLiteDatabase to get a cursor. See this answer for better details about queries.", 
+        "id": "29797229"
+    }, 
+    {
+        "text": "android which class provide definition to SharedPreferences interface if look at SharedPreferences it clearly shows it's an interface in Android SDK. public interface SharedPreferences Can anyone help me understand it better that which class exactly provides definition to functions of SharedPreferences ?", 
+        "id": "34248686"
+    }, 
+    {
+        "text": "Use Context.getExternalFilesDir(String) for saving picture to your local external folder. Since KitKat (api 19) you dont need permissions to write to this external storage folder. Before api19 you had to require \u200bR\u200bE\u200bA\u200bD\u200b_\u200bE\u200bX\u200bT\u200bE\u200bR\u200bN\u200bA\u200bL\u200b_\u200bS\u200bT\u200bO\u200bR\u200bA\u200bG\u200bE\u200b , so if you want to support earlier apis add to your manifest: you also dont need WRITE_* permission, since you are not writing - camera app is doing this. For explanation why #getCacheDir# does not work look here: Camera Intent not saving photo", 
+        "id": "34189366"
+    }, 
+    {
+        "text": "This is an area of confusion for many, as can be seen in this other thread . In fact, even this book from a respected source such as O'Reilly can confuse matters by suggesting that the Destroyed state can mean \"killed\" and that it can be reached from either #onDestroy()# or process killed : IMHO, that O'Reilly state diagram is flawed and doesn't reflect the full behavior of the system as the \"official\" diagram does: Analyzing this diagram, one can conclude that onDestroy() never automatically leads to App process killed . I believe this answers your first question. As for you second question, the answer is yes : If you really want to totally kill your application's process (why would you want to do that?), then your only recourse is killProcess() .", 
+        "id": "11865184"
+    }, 
+    {
+        "text": "I think GridLayout is what you're looking for. It wasn't added until ICS though, so you may want to look into the support added in the v7 support library Blogpost describing GridLayout s uses here: http://android-developers.blogspot.com/2011/11/new-layout-widgets-space-and-gridlayout.html", 
+        "id": "20038731"
+    }, 
+    {
+        "text": "You were almost there! Three things you forgot to do: Have your MainActivity implement View.OnClickListener - If you had used @Override before your #onClick()# method the compiler would've tipped you off. In general, whenever you implement a function that you expect the framework to call, use @Override as a sanity check. Attach your MainActivity to your buttons using View.setOnClickListener() - this actually tells the buttons to call your onClick() method when they are clicked. (possibly) Define your service in your AndroidManifest.xml - Stick <service android:name=\"MyService\"/> inside your element. If you didn't do this, you could've found out by looking in Logcat (DDMS or Debug perspective). It would've said: That's all I had to change in your code, and then the toasts showed up on my screen with the appropriate click count.", 
+        "id": "5156722"
+    }, 
+    {
+        "text": "Override the paintDeterminate() method in a custom BasicProgressBarUI to render your indicator; a related example is seen here . You can scale the rendering, as shown here , in a way that fills the component; this will obviate the need for a custom layout manager internal to your component. Override #getPreferredSize()# , as discussed here , so that your custom progress indicator works correctly with enclosing layouts.", 
+        "id": "28658368"
+    }, 
+    {
+        "text": "The variables are strings, but charAt returns a char , which is a kind of number, and then you're adding those numbers together, which leaves you with an int . Use a StringBuilder instead and append the result of charAt twice.", 
+        "id": "36167990"
+    }, 
+    {
+        "text": "You need to check isCancelled to find out if your AsyncTask has been cancelled. In your while loop : That way you aren't stuck in that loop indefinitely.", 
+        "id": "5596831"
+    }, 
+    {
+        "text": "First: FragmentTransaction.replace() takes the ID of a ViewGroup, not of the fragment. You need to have a ViewGroup (such as #FrameLayout#) in your layout XML that acts as a container for your fragments. Second: A fragment declared statically in an XML layout cannot be removed. You need to add it programmatically when the activity is created. You can do this like so:", 
+        "id": "18028557"
+    }, 
+    {
+        "text": "You'll want to profile to be sure, but it may help to focus on your implementation of componentResized() . As the enclosing container is resized, the method will be invoked repeatedly. In the handler, you're continually instantiating a new Font inside a while loop. At a minimum, consider using deriveFont() . Note especially that the size parameter is a float , while your present calculation appears to use a truncating integer division .", 
+        "id": "31151747"
+    }, 
+    {
+        "text": "This question sounds a lot like homework, so I'll try to simply point you in the right direction: Take a look at the HashMap . You could store what the user will provide as key and the respective authentication as value. The HashMap is a key value structure, thus you could store the request-expected response as so. The keys of HashMap structures must be unique. So you will not have any duplicates. You could also use the #containsKey# method to see if a key already exists. Given your example, You could do something like so: As a side note, one usually keeps sensitive information stored somewhere else and does not ship the authentication table with the product since that would be a security risk. You could layer your code in such a way that one part pretends to send a request for authentication. EDIT: .....", 
+        "id": "31161511"
+    }, 
+    {
+        "text": "Others have pointed out the #deleteCharAt# method, but here's another alternative approach: Alternatively, use the Joiner class from Guava :) As of Java 8, StringJoiner is part of the standard JRE.", 
+        "id": "3395345"
+    }, 
+    {
+        "text": "Here is my approach using Location api in android. Step 1: Use the Services connected method provided to check if Google Play Servcies are available. Step2: Make Sure you've implemented the ShowError Dialog Method along with the ErrorDialog Fragment Step 3: Find the Latitude & Longitude. If you need more information please refer to my answer on this page.", 
+        "id": "24624518"
+    }, 
+    {
+        "text": "Problem with other solution is that they provide you only logical size of all files in specified directory. It will be different from actual (physical) used space. If your directory has a lot of subdirectories and/or small files, there may be a huge difference between logical and actual size of directory. Here is what I found how to take in count physical structure of FS. You can use StatFs to get block size:", 
+        "id": "19596456"
+    }, 
+    {
+        "text": "You should notify your adapter with notifyDataSetChanged() to update your list like yourAdapter.notifyDataSetChanged();", 
+        "id": "35288420"
+    }, 
+    {
+        "text": "Gridview only supports horizontal gravity? I just want to confirm that android's GridView only supports horizontal gravity for its children? I see in the docs it says setGravity(int) : \"Describes how the child views are horizontally aligned. Defaults to Gravity.LEFT\" If that is correct then what is the best way to get my items to vertically align bottom? I think one option is to wrap each item in a parent view (such as #FrameLayout#) of a fixed height and give the contents gravity bottom. Is that the best choice?", 
+        "id": "7933383"
+    }, 
+    {
+        "text": "Breaking text into sentences is not that easy as just looking for dots. E.g., you don\u2019t want to #split# in between \u201cMr.Smith\u201d\u2026 Thankfully, there is already a JRE class which takes care of that, the BreakIterator . What it doesn\u2019t have, is Stream support, so in order to use it with streams, some support code around it is required: With that support class, you can simply say, e.g.:", 
+        "id": "31157893"
+    }, 
+    {
+        "text": "You could use a Timer to schedule a TimerTask each second. first you take the beginning time then in the TimerTask job you get the time spent ( ) you format this difference as a String of the form xx:xx with DateFormat you update the TextView with this String I'm not sure if you could have problems when updating the #TextView# from the TimerTask job as it doesn't run in UI thread, in that case you can use Activity.runOnUiThread to do this", 
+        "id": "4591331"
+    }, 
+    {
+        "text": "You should use Parcel.createStringArray() in your case. I can't imagine a proper use-case for #Parcel.readStringArray(String[] val)# but in order to use it you have to know the exact size of array and manually allocate it.", 
+        "id": "14385351"
+    }, 
+    {
+        "text": "If this method is not running in your Main Activity thread, you should change it. how? Set a Handler in the main activity and pass it to the thread (above). In the handler you should implement the GUI related part of your method (i.e. #ProgressDialog# ). When you need to show the ProgressDialog , just call your Handler and than keep processing (your loop in this case). Same for the #dismiss()# .", 
+        "id": "5366138"
+    }, 
+    {
+        "text": "For privacy reasongs the mac address keeps on changing-refer below snippet from the ble specs: So the ideal way is to use the IRK to gerate the actual address of the device.However I didnt find any API to do it. Currently,the work around- which I am using in mny app- to re-connect to the device, loop through all the available device. get the serial no-if the serial no matches the already stored number\nthen keep the connection else disconnect. Repeat step 2 for all the devices. This work around will only work if the device exposes serial number through some service. You can also try setting the autoconnect flag to true when you call connectGatt (Context #context#, boolean #autoConnect#, BluetoothGattCallback #callback#) From the docs:", 
+        "id": "32018515"
+    }, 
+    {
+        "text": "You could also use JDK's standard RunnableFuture like this:", 
+        "id": "39514424"
+    }, 
+    {
+        "text": "Based on your requested result, I think you want to return a #String# . And you could use String.format(String, Object...) to build like", 
+        "id": "33029441"
+    }, 
+    {
+        "text": "I'm just learning, but if I'm reading the source correctly, ArrayAdapter's constructor doesn't copy references to each of the elements in the array or list. Instead, it directly uses the list that's passed in, or for an array uses asList() to treat the original array as a list. Since the list returned by asList() is still just a representation of the underlying array, you can't do anything (such as resize) that you couldn't do with an array. Try passing a list like #ArrayList# instead of an array.", 
+        "id": "5125428"
+    }, 
+    {
+        "text": "When you release your finger from the cell it no longer registers as pressed. What you are going to want to do is actually change the background of the individual row when a users selects is. This means implementing an onItemClick or #onItemTouch# and flagging the adapter to redraw the row with the new background. If you are already using a custom list adapter you can just implement a check against a boolean in your getView() method. You will also need to keep track which rows are 'selected' and which are not. pseudocode:", 
+        "id": "5682140"
+    }, 
+    {
+        "text": "Let\u2019s start with some general notes. Your sequence .map(line -> line.#split#(\"\\\\b+\")).#flatMap#(Arrays::stream) isn\u2019t recommended. These two steps will first create an array before creating another stream wrapping that array. You can skip the array step by using splitAsStream though this requires you to deal with #Pattern# explicitly instead of hiding it within #String.split# : .#flatMap#(Pattern.#compile#(\"\\\\b+\")::#splitAsStream#) but note that in this case, splitting into words doesn\u2019t really pay off. If you want to keep your original parseLine method, you can simply do #Files.lines(Paths.get(inputFile))# .#forEach(this::parseLine)#; and you\u2019re done. But seriously, that is not a real solution. To do pattern matching, you should use a library designated to pattern matching, e.g. the regex package . You are using it already, when you do splitting via split(\"\\\\b+\") but that\u2019s far behind from what it can do for you. Lets define the pattern: (\u2026) forms a group that allows capturing the matching part so we can extract it for our result [^:]* specifies a token consisting of arbitrary characters except the colon ( [^:] ) of arbitrary length ( * ) \\d+ defines a number ( d = numeric digit, + = one or more) [NS] and [WE] match a single character being either N or S , or either W or E , respectively so the entire pattern you are looking for is and the entire parse routine will be: and I really hope you are calling your hard-to-read method never \u201ccondense\u201d anymore\u2026 Using the routine above, a clean Stream -based processing solution would look like to collect a file into a new list of cities.", 
+        "id": "29751981"
+    }, 
+    {
+        "text": "try to use getParent() in place of #getRootView()# to get the instance of the surrounding #LinearLayout# ..", 
+        "id": "14260531"
+    }, 
+    {
+        "text": "Take a look to MediaStore.Audio content provider. Here you can save and share between application information about image, audio about every artist. Therefore Artist table in the MediaStore has just : Artist name, Artist key, Number of Albums, Number of Tracks [ check MediaStore.Audio.ArtistColumns ]. A clean way it is saving images with the #MediaStore.Images.Media# & #MediaStore.Images.ImageColumns# . A dirtier approach it might be to use MediaStore.Audio.Artists where ARTIST_KEY you can save the Artist name as key and ARTIST you can save the image path.", 
+        "id": "30940206"
+    }, 
+    {
+        "text": "That is incorrect . The documentation for Object.equals(Object) has a formal explanation of the contract for extending this method. Essentially the intent for the Object.equals method is to check if two objects are actually the same object. However it often makes sense to override this functionality and instead make your class' equals method determine whether two objects are logically equal to each other (for example, two different instances of String objects which both represent the same sentence). On the other hand, #Object.hashCode()# specifies the following contract: Basically, two different objects (either logically different or technically distinct) may have the same hashcode, because of how hashcodes are designed, but they should not be \"equals\". However, if two objects are equal to each other, they must have the same hashcode. Similarly, an object's hashcode may only change if the object itself changes in some way. For further reading, see the Wikipedia article on hash functions .", 
+        "id": "25222545"
+    }, 
+    {
+        "text": "In ordinary java programs passing parameters(Object type), is kind of create a new handler to the object and giving to another method ( In regular words passing the reference by value ). But when it comes in android, passing object references from activity to activity, where their states have to be persisted, is a serious headache. One way you can do is create a static object in the first activity and access from the second, though this seems to be a easiest way, there is no guarantee that the system maintains the activity in the memory . Therefore the second activity may loose the object reference. Other way, and the mostly recommended way is serializing(Kind of flatten the object) the object and pass with the intent as extra. In android there are two ways to serialize. Implement the java's serializable interface Implement the android's parcelable interface However, on the android, there is a serious performance hit that comes with using serializable, the solution is using parcelable. You can find a pretty good tutorial and explanation on android parcelable implementation here .", 
+        "id": "11915076"
+    }, 
+    {
+        "text": "That's basically the third example in the API documentation for java.util.stream.Collectors :", 
+        "id": "24726924"
+    }, 
+    {
+        "text": "Parcel/Serialize ClassLoader I'm wondering if it's possible to parcel (or serialize) a ClassLoader to send it through a #Message# to another process in Android. ClassLoader doesn't implement Parcelable / Serializable . Any hints on how to do this? Thanks in advance!", 
+        "id": "11538472"
+    }, 
+    {
+        "text": "Use android.util.Log . Then try", 
+        "id": "5732735"
+    }, 
+    {
+        "text": "A service can be used to achieve the objectives stated above. The service can have a timer when not connected, a request can be made to the manager on the service which would get all the information from a broadcast receiver. #Services Broadcast Receiver# This page can be used tofigure out how to find if wifi is connected, I know it is to do #withWifiP2p# however it is very similar!", 
+        "id": "28809954"
+    }, 
+    {
+        "text": "PROBLEM : you are cast wrong way SOLUTION 1: use get () method for getting result back from #AsyncTask# in main UI Thread as: NOTE : this solution pause your main thread execution until response not come back from AsyncTask as doc says SOLUTION 2: use #onPostExecute(List<FTPFile> result)# for updating Ui without hanging of Ui when AsyncTask execution complete just change your code as: and start #myftpTask# task as from main Activity :", 
+        "id": "13891436"
+    }, 
+    {
+        "text": "For the lyrics part, while there are many ways to implement it, one way is to store phrases from your lyrics in an arraylist of strings and display each phrase at its specific time while the song is playing. Use Media Player #getCurrentPosition()# to get the current playback time and display lyrics from your arraylist at the time it should appear on the screen. Further develop your algorithms to make it more efficient but you get the idea.. For the music playing and recording part you should use Media Player and Media Recorder. There are other ways to play and record audio but they are more complicated. So, Media Player example: more details here Media Player Media Recorder example: more details here: Media Recorder Good luck!!", 
+        "id": "25843017"
+    }, 
+    {
+        "text": "You're getting an error because startActivity() is a method in the Activity class. To be able to use this, your class must : Extend Activity or a class that extends Activity Have an Activity instance somewhere, possible passed in through the constructor In the second case, you'll have something like: and to call your class from an Activity or Service or something else that subclasses Context or one of its subclasses: Make sure you do the above in or after #onCreate()# has been called.", 
+        "id": "12694145"
+    }, 
+    {
+        "text": "Try Files.probeContentType(Path) [JDK 7] output application/x-zip-compressed", 
+        "id": "30508247"
+    }, 
+    {
+        "text": "Java 8: how to derive a ZoneId from #ZoneOffset# I was reading the API for the #ZoneId# class. It states that there are three tipes of ID: derived from ZoneOffset offset-style IDs with some form of prefix. Examples: ZoneId.of(\"GMT+2\");\nZoneId.of(\"UTC\");\nZoneId.of(\"UT+01:00\"); region-based. Examples: #ZoneId.of(\"Asia/Aden\")#;\n#ZoneId.of(\"Etc/GMT+9\")#;\n#ZoneId.of(\"Asia/Aqtau\")#; But what is the right syntax for the first kind? Documentation says that What's the combination of #String# and #ZoneOffset# object I'm supposed to use to create a ZoneId of the first kind?", 
+        "id": "32931871"
+    }, 
+    {
+        "text": "You can use #dialog.setCancelable(false)#;\n#dialog.setCanceledOnTouchOutside(false)#; reference", 
+        "id": "24079980"
+    }, 
+    {
+        "text": "I thought I could get the data converted from the #SurfaceView# . But the best method to use is : Set the camera's orientation to 90 degrees. Set output format to NV21 (which is guranteed to be supported on all devices). Set to turn the Flash ON. Start preview in the SurfaceView . List item Then, I call the #setPreviewCallback# and #onPreviewFrame# to get the incoming frame, and convert it to RGB pixel array. Which I can then get intensity of each color in the picture by averaging all pixels intensity by running #myPixels# array through a for loop, and checking #Color.red(myPixels[i])# for each desired color (inside the #onPreviewFrame# ). Where decodeYUV420SP is found here . I timed this operation to take about 200ms for each frame. Is there a faster way of doing it?", 
+        "id": "15950209"
+    }, 
+    {
+        "text": "Yes, it is possible to detect beacons in the background only after an Activity starts, but you still need to make a custom Application class that implements the #BootstrapNotifier# . The reason this is necessary is because of the Android lifecycle. An Activity may be exited by backing out of it, going on to a new Activity , or by the operating system terminating it in a low memory condition if you have taken it from the foreground. In the low memory case, the entire application, including the Application class instance (and the beacon scanning service) is terminated along with the Activity . This case is completely beyond your control, but the Android Beacon Library has code to automatically restart the application and the beacon scanning service a few minutes after this happens. The tricky part for your purposes is to figure out in the #onCreate# method of the Application class whether this this is an app restart (after low memory shutdown), or a first time launch of the app before the Activity has ever been run. A good way to do this is to store a timestamp in #SharedPreferences# for when your Activity is launched. So your Application class might have code like this: In your Activity you will also need code to detect it is a first launch, and if so, start the scanning from there.", 
+        "id": "34828827"
+    }, 
+    {
+        "text": "How to replace #Iterables.filter()# with Streams? I'm trying to migrate from Guava to Java 8 Streams, but can't figure out how to deal with iterables. Here is my code, to remove empty strings from the iterable: Pay attention, it's an Iterable , not a Collection . It may potentially contain an unlimited amount of items, I can't load it all into memory. What's my Java 8 alternative? BTW, with Lamba this code will look even shorter:", 
+        "id": "41930727"
+    }, 
+    {
+        "text": "If your application is going to be released to the public and if you have sensitive data in your config such as API keys or passwords I would suggest to use secure-preferences instead of #SharedPreferences# since ultimately SharedPreferences are stored in an XML in clear text and on a rooted phone it is very easy for an application to access another's shared preferences. I would suggest a few of other methods: Method 1: Use a *.properties file with Properties Pros: Easy to edit from whatever IDE you are using More secure: since it is compiled with your app Can easily be overridden if you use Build variants/Flavors You can also write in the config Cons: You need a context You can also write in the config (yes, it can also a be a con) (anything else?) First, create a config file: res/raw/config.properties and add some values: api_url=http://url.to.api/v1/\napi_key=123456 You can then easily access the values with something like this: Usage: Of course this could be optimized to read the config file once and get all values. Method 2: Use AndroidManifest.xml meta-data element: Personally I've never used this method because it doesn't seem very flexible. In your AndroidManifest.xml add something like: Now a function to retrieve the values: Usage: Method 3: Use #buildConfigField# in your Flavor : I didn't find this in the official Android documentation/training but this blog article is very useful. Basically setting up a project Flavor (for example prod ) and then in your app's build.gradle have something like: Usage:", 
+        "id": "35527922"
+    }, 
+    {
+        "text": " You are certainly welcome to create an #ImageView# widget in Java, using a suitable constructor , then call #addView()# on a #ViewGroup# to add the ImageView to it. There are a variety of methods on ImageView for setting the image to show, such as #setImageResource()# . However, #AbsoluteLayout# has been deprecated for about six years. Please do not use it.", 
+        "id": "32596650"
+    }, 
+    {
+        "text": "You have two options, and you might want to use a combination of the two: 1) Register a #BroadcastReceiver# for ACTION_PACKAGE_REMOVED , and once fired, you can inspect the data of the intent to see whether your package was removed. It might be wise to add a time-out of sorts, possibly through an #Alarm# set five minutes into the future. 2) Once the user returns from either uninstalling or canceling the uninstall, your Activity will resume. You can check whether the package of interest still exists in #onResume()# , using PackageManager.getPackageInfo() or similar. Note: The user might not return to your app, in which case the time-out/Alarm recommendation would become important.", 
+        "id": "23692571"
+    }, 
+    {
+        "text": "I think the problem is that you set default item state (checked or not) here: for 3 items, but you can have a different number of item: mMemberList.size() , from the javadoc : Using null for checkedItems should fix the issue:", 
+        "id": "28264415"
+    }, 
+    {
+        "text": "There are several ways to do this, shown below. As a friendly warning, be careful and up front to the user when dealing with account, profile, and contact data. If you misuse a user's email address or other personal information, bad things can happen. Method A. Use AccountManager (API level 5+) You can use AccountManager.#getAccounts# or AccountManager.#getAccountsByType# to get a list of all account names on the device. Fortunately, for certain account types (including com.google ), the account names are email addresses. Example snippet below. Note that this requires the GET_ACCOUNTS permission: <uses-permission android:name=\"android.permission.GET_ACCOUNTS\" /> More on using AccountManager can be found at the Contact Manager sample code in the SDK. Method B. Use ContactsContract.Profile (API level 14+) As of Android 4.0 (Ice Cream Sandwich), you can get the user's email addresses by accessing their profile. Accessing the user profile is a bit heavyweight as it requires two permissions (more on that below), but email addresses are fairly sensitive pieces of data, so this is the price of admission. Below is a full example that uses a #CursorLoader# to retrieve profile data rows containing email addresses. This requires both the READ_PROFILE and READ_CONTACTS permissions: 5/6/2012 \u2014 Added info on profile access for Android 4.0+", 
+        "id": "2175688"
+    }, 
+    {
+        "text": "Check out the page for AlarmManager , and look at the note in #setRepeating()#. As of API 19, the repeating functions are inexact. To get the proper repetition you have to handle the alarm each time and reschedule it.", 
+        "id": "26871847"
+    }, 
+    {
+        "text": "RFCOMM is not a bluetooth 'Profile' it is a protocol. Serial Port Profile (SPP) is based on RFCOMM and is a profile.\nThough I am using SPP doesn't seem to be an 'officially supported' profile, and thus ACTION_CONNECTION_STATE_CHANGED is not broadcast. ACTION_ACL_CONNECTED, ACTION_ACL_DISCONNECTED, and ACTION_ACL_DISCONNECT_REQUESTED broadcast events of BluetoothDevice can be used to listen for the state of a bluetoothDevice. These are low level events that will be broadcast for both the RFCOMM protocol and Profile connections. I've found that these broadcasts don't necessarily behave in an expected manner though.\nAs was also experienced here What triggers the BluetoothDevice.ACTION_ACL broadcasts?", 
+        "id": "16007357"
+    }, 
+    {
+        "text": "You need to use TYPE_NULL. As per doc:\nSet the type of the content with a constant as defined for inputType. This will take care of changing the key listener, by calling #setKeyListener(KeyListener)#, to match the given content type. If the given content type is TYPE_NULL then a soft keyboard will not be displayed for this text view. Refer this link .", 
+        "id": "9640770"
+    }, 
+    {
+        "text": " You can use getLastKnownLocation() but if this returns null then you must wait for a location update. To test if the GPS is active use isProviderEnabled() . You should consider using the PASSIVE_PROVIDER as well. This report any location fix whether it's GPS, NETWORK, etc.", 
+        "id": "14112717"
+    }, 
+    {
+        "text": "Assuming that you use Java 8 , it can be done using the Stream API and the method removeAll(Collection) to remove all matching elements with this: Otherwise, you can still use the old approach with 2 loops that iterate over an #Iterator# to be able to remove the current element thanks to the method remove()", 
+        "id": "39686041"
+    }, 
+    {
+        "text": "First, I don't see where inflater is a field of MyFragment , so that's a problem. Second, I would recommend against keeping a reference to an inflater. It's cheap enough to obtain an inflater with: (assuming you have access to a context somewhere.) Also, I don't know what kind of adapter has a method #viewAt(int)# . The usual signature is: For performance reasons, you should definitely not inflate a new view on every call to this method. Instead you should check whether the convertView argument is already a view of the expected type and only inflate a new view if it won't work.", 
+        "id": "20849150"
+    }, 
+    {
+        "text": "#Date# represents a specific moment in time, not a duration. new Date(60000) does not create \"one minute\". See the docs for that constructor : If you want \"one minute from now\" you'll probably want to use the #Calendar# class instead, specifically the add method. Update: DateUtils has some useful methods that you might find useful. If you want the elapsed time in HH:mm:ss format, you might try DateUtils.formatElapsedTime . Something like: Note that the 60 is in seconds.", 
+        "id": "15213091"
+    }, 
+    {
+        "text": "Handler javadoc says: Since all activities are created and their methods invoked on main application thread (also called EDT) and this is where you created your Handler, then when you invoke your handler (via post() or similar methods) from a background thread it will be execute in EDT. When in the background thread you invoke #handler.post(runnable)# than runnable's run() method will be executed in thread where you created handler (= the main app thread). No it will not direct user to Activity A or make it visible. It will just execute runnable.run() method that you defined in Activity A.", 
+        "id": "5226438"
+    }, 
+    {
+        "text": " Android has a special column for this: ContactsContract.CUSTOM_RINGTONE . So, you could use ContactsContract.Contacts.getLookupUri to get your contact's Uri , after that pretty much all that's left is to call ContentResolver.update . Here's an example of looking up a contact by their phone number, then applying a custom ringtone: Also, you'll need to add both permissions to read and write contacts:", 
+        "id": "23405761"
+    }, 
+    {
+        "text": "If you don't want to use the #RecognizerIntent# to do speech recognition, you could still use the SpeechRecognizer class to do it. However, using that class is a little bit more tricky than using the intent. As a final note, I would highly suggest to let the user know when he is recorded, otherwise he might be very set up, when he finally finds out. Edit: A small example inspired (but changed) from this stack overflow entry Important: Run this code from the UI Thread.", 
+        "id": "5915010"
+    }, 
+    {
+        "text": "Use the ImageIO.getWriterFormatNames() method. Description of the method from the official javadocs:", 
+        "id": "40308571"
+    }, 
+    {
+        "text": "restoreState was never reliable. That's perhaps why the documentation now says this. And the corresponding entry for #saveState()# speaks thus: what you really should do inside the #onCreate# method is to call webView.#loadUrl()# if you want to display the last visited url, please see this answer : If you are concerned about the webview reloading on orientation change etc.", 
+        "id": "32866142"
+    }, 
+    {
+        "text": "fyi, Source", 
+        "id": "35659208"
+    }, 
+    {
+        "text": "Android 4.3 ImageView ScaleType.MATRIX today I set up the new Android JB 4.3 on my Nexus 7 and i tried to run my application. Everythings works like it should except one little thing about ImageViews with ScaleType.MATRIX . Basically what i have in my application is a ImageView as background and accordingly to a ViewPager callbacks i move the focused part of the image updating the Matrix i gave to the imageView using setImageMatix( Matrix matrix ) . the problem seems to be that i can't update the matrix anymore, i just have to instantiate a new one a pass it to the ImageView . i managed to work around it instantiating everytime a new Matrix but it seems awfully memory expensive compared to the old version. is this a BUG?\nis there a way to udpate the Matrix ? ( i by the way already tried to invalidate() the ImageView ecc. ) NOT WORKING WORKING EDIT: in the first case the image is shown at the top left corner of the ImageView without any scale or translate applied to it, like if the matrix is back to identity.", 
+        "id": "17883719"
+    }, 
+    {
+        "text": "Here is all the information you need: Android AlarmManager", 
+        "id": "7495459"
+    }, 
+    {
+        "text": "#TextureView.getBitmap()# showing inconsistent performance I'm doing some image processing tests with Bitmap images obtained from a #TextureView#, which is handling my video input. In my test I've noticed that the time TextureView.getBitmap(Bitmap) takes to run, sometimes varies between executions. To demonstrate the problem I modified a sample from the TextureView API reference . In the code below, I use the camera as input to the TextureView, grab the bitmap and render it to a #SurfaceView#, measuring how much time it takes. I've tested it on a pair of Nexus 7 devices both running Android 4.2.2. I've actually noticed two patterns, a slow one and a fast one. When the execution is \u201cslow\u201d, getBitmap(Bitmap) takes about 20ms.\nWhen the execution is \u201cfast\u201d, getBitmap(Bitmap) takes about 15ms. Most of the time this the app runs in \u201cslow\u201d mode. If I fiddle with the device or recompile/reinstall the app, sometimes I get it to work in \u201cfast\u201d mode. But after that it will run in slowly again. The speed only changes after the program is restarted, never during execution. By the way, dumping the Bitmap to the SurfaceView only takes around 8ms: I wonder why getting the Bitmap out of the TextureView takes more than double that time. The questions: Why does this disparity in execution time happen? Is there a way to ensure that getBitmap(Bitmap) always runs as fast\nas possible? Is it reasonable that writing to SurfaceView be twice faster than\nreading from TextureView? Thank you. --Rafael PS: I've already posted this in Android Developers Google Group, but it seems it is stuck in moderation since last week. Sorry for cross posting. Edit: I've added a sample project to GitHub for those who wish to try it more easily: The activity: The layout:", 
+        "id": "16889883"
+    }, 
+    {
+        "text": "You'll have to use the hardware accelerated encoding capabilities of the device, if any. As far as I can tell ffmpeg doesn't offer HW accelerated encoding on Android. There is a libstagefright but it's used for HW decoding. Depending on your target API version you may be able to use MediaCodec (API 16) to do HW encoding and MediaMuxer (API 18) to mux into mp4 . If you manage to encode with MediaCodec you could use ffmpeg to do the muxing part, which would require only API 16.", 
+        "id": "33496616"
+    }, 
+    {
+        "text": "Parcel vs. Serializeable for exchanging objects among services/activities Let me first give you the whole picture: I am developing a location based application, that invokes a constant recreation and exchange of objects, among several activities and services. The necessary data to create the objects being exchanged, is stored in an SQLite database, that in its turn gets populated by retrieving data from a remote SQL database. It got quickly obvious, that passing raw attributes of an object to activities/services (via intents), was a huge coding overhead, diminishing every extension prospects the application might have. So, soon i decided to extend my main object class to implement a Parcelable one, as shown below: Although i checked every data entry to the parcel fields, the following exception keeps spawning: For this reason, i consider of the MyProduct.class implementing serializable , hoping that it will turn to be a more error-forgiving structure. What would be the pros and cons of such alternation in the case described above?", 
+        "id": "4607922"
+    }, 
+    {
+        "text": "The #layout_width# and #layout_height# properties of a view are intended to be used by its parent container. Some containers ignore one or both of these; most honor them. You need to consult the documentation of the container (in your case, SlidingDrawer) to understand how the values will be used. You don't show the complete main.xml, so it's hard to say exactly what's going wrong. It would also help if you posted an image of what's wrong. EDIT After seeing your complete layout, I think that the basic problem here is that you are using a #LinearLayout# to contain the SlidingDrawers. As the docs for #SlidingDrawer# note, they need to be in either a #FrameLayout# or a #RelativeLayout# (actually, any container that allows multiple views to sit on top of one another). Another possibility is that the second SlidingDrawer is being placed directly under the first one. Try changing the size of the second button (e.g., make the text longer) and see if it pokes out on either side of button 1.", 
+        "id": "8698713"
+    }, 
+    {
+        "text": "First you'll need to create a layout file that will represent how you want to display each list item. Then you'll need to extend the BaseAdapter class so that you can decide how you want to display each #Kovil# class. Once that is constructed, you can call #setAdapter# on your #ListView# .", 
+        "id": "21495988"
+    }, 
+    {
+        "text": "#startManagingCursor()# is deprecated because it does operations on the main thread which can freeze up the UI and deliver a poor user experience. You should use a CusrorLoader with a LoaderManager instead. Check out this tutorial series from Alex Lockwood for detailed instructions:.", 
+        "id": "19652004"
+    }, 
+    {
+        "text": "A quote from Javadoc for Set: Use any derivative of List .", 
+        "id": "5895479"
+    }, 
+    {
+        "text": "use Environment.getExternalStorageDirectory() instead of static string for getting SDCARD path as : and make sure u have added sdcard permission in AndroidManifest.xml :- <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />", 
+        "id": "15216796"
+    }, 
+    {
+        "text": "It would be helpful to know what error you've got, but I think the problem is the super.onStart(); line in your code. #onStart()# would be called by the activity after #onCreate()# and you dont have to call it by yourself ( Source ).", 
+        "id": "12499677"
+    }, 
+    {
+        "text": "I would insist you to keep global variable to be used throughout the app in Application class which is specially meant for that in Android. Here is a tutorial of how you can save and retrieve global variables using Application class", 
+        "id": "39633848"
+    }, 
+    {
+        "text": "This is not the correct way of dealing with injected Java objects: Injected objects only become \"visible\" on the next page load after calling #addJavascriptInterface# . Loading javascript: URIs doesn't count as a page load. Check out the sample from the docs : The loadData in between is what actually makes the object to be inserted. You can as well use #loadUrl# but it needs to be a real page (from the network, assets, about:blank , whatever), but not a javascript: URI.", 
+        "id": "40979430"
+    }, 
+    {
+        "text": "To draw a rotated rectangle you need to rotate the canvas before drawing, (then rotate it back to right-side up if you're drawing anything else). #Canvas.rotate()# just alters the canvas's transformation matrix, which transforms shapes drawn after the call. #Path.Direction# has nothing to do with rotation transforms. From the docs :", 
+        "id": "19661095"
+    }, 
+    {
+        "text": "As per Peter Knego's answer, #RelativeLayout# is what you want for overlapping Views, but I suspect you will find it hard to get the #onClick# events for images underneath the text. You may need to do a custom layout class that extends RelativeLayout and draws your text manually from dispatchDraw() .", 
+        "id": "4276789"
+    }, 
+    {
+        "text": "You may also try to use CountDownTimer something like: See Displaying logo for few seconds at application start for more.", 
+        "id": "18390119"
+    }, 
+    {
+        "text": "Replace FrameLayout with #LinearLayout# and try it. Try to understand the where and why FrameLayout is used.", 
+        "id": "23164625"
+    }, 
+    {
+        "text": "This isn't really how services are designed. What you are looking for sounds much more like at BroadcastReceiver . Using one of these, a single server can send and receive multiple notifications for different situations. Running several services in this case sounds wasteful.", 
+        "id": "5313671"
+    }, 
+    {
+        "text": "SoundPool API not playing when loaded with string path I'm getting my feet wet on SoundPool API, I've made just a small app to learn and see how dynamic SoundPool is. But I don't know why when I load a String path (URI in String format) It simple doesn't plays! In debug mode I realized that when I go to chose a sound using my Intent and them I load the path of the sound to the SoundPool it gives all the time a #SoundID# of 0. not sure if it is a problem.. Any help would be appreciated! Code }", 
+        "id": "34120289"
+    }, 
+    {
+        "text": " #onRetainCustomNonConfigurationInstance()# is a relatively new method and it is not deprecated. I would really assume it is not going to disappear soon, because there is no reason for introducing something new just to remove it. You can use it safely. #onRetainNonConfigurationInstance()# always return an instance of inner #NonConfigurationInstances# class with retained fragments, loaders etc states. You cannot (and should not) change this system behavior. That's why the method is final and you cannot override it. If you want to retain your custom instance, you need to override onRetainCustomNonConfigurationInstance() and return it from there. In fact, onRetainNonConfigurationInstance() calls onRetainCustomNonConfigurationInstance() and retains retuned instance with the other states like retained fragments and loaders. It is rather a matter of your use case and preferences. The logic might be like this. If your activity just controls fragments and has no other special logic in it, then it is easier to use retained fragments. If your activity has something to retain, then you can safely use onRetainCustomNonConfigurationInstance() method. As for now, in both cases the state still gets retained by good old and deprecated onRetainNonConfigurationInstance() method. p.s. Regarding the bonus question about storing a state I would rather suggest to look at onSaveInstanceState() method. It was intended for storing states.", 
+        "id": "31061177"
+    }, 
+    {
+        "text": "You could scale the image to fit a certain width and height Refer here Scale EDIT: You could try something like Since: API Level Scale the image uniformly (maintain the image's aspect ratio) so that both dimensions (width and height) of the image will be equal to or less than the corresponding dimension of the view (minus padding). The image is then centered in the view. From XML, use this syntax: android:scaleType=\"centerInside EDIT: Also you may be able to use #Bitmap#.. Something like..", 
+        "id": "7114092"
+    }, 
+    {
+        "text": "I think the problem is that you are calling #PendingIntent.getService()# instead of #PendingIntent.getActivity()# as the doc say: PendingIntent.getService :\nRetrieve a PendingIntent that will start a service , like calling #Context.startService()#. The start arguments given to the service will come from the extras of the Intent. PendingIntent #getActivity# : Retrieve a PendingIntent that will start a new activity , like calling #Context.startActivity(Intent)#. Note that the activity will be started outside of the context of an existing activity, so you must use the #Intent.FLAG_ACTIVITY_NEW_TASK# launch flag in the Intent.", 
+        "id": "26895887"
+    }, 
+    {
+        "text": "Here's an example of how to do it. If the file is so large that it's going to take more than about 5 seconds to read, then it should probably just be an AsyncTask . EDIT You can only change UI elements in the UI thread. The documentation on threads has more details. When you try to do it from another thread, you get this (from your pastebin): I think the easiest solution is using AsyncTask , as I recommended before. You just put your work code in one function ( #doInBackground()# ) and your UI code in another ( #onPostExecute()# ), and AsyncTask makes sure they get called on the right threads and in order. The documentation I linked to has examples with loading bitmaps, which is just about the same thing as loading text.", 
+        "id": "8580029"
+    }, 
+    {
+        "text": "You have created your custom Application class but you must also link to it in your AndroidManifest.xml. Your <application> tags needs to be like this (replace your_package_name with the package name your MyApplication resides in): An excerpt from Android Developer Docs :", 
+        "id": "38679746"
+    }, 
+    {
+        "text": "How to #Animate# #Addition# or #Removal# of Android #ListView# Rows In iOS, there is a very easy and powerful facility to animate the addition and removal of #UITableView# rows, here's a clip from a youtube video showing the default animation. Note how the surrounding rows collapse onto the deleted row. This animation helps users keep track of what changed in a list and where in the list they were looking at when the data changed. Since I've been developing on Android I've found no equivalent facility to animate individual rows in a TableView . Calling notifyDataSetChanged() on my Adapter causes the ListView to immediately update its content with new information. I'd like to show a simple animation of a new row pushing in or sliding out when the data changes, but I can't find any documented way to do this. It looks like #LayoutAnimationController# might hold a key to getting this to work, but when I set a LayoutAnimationController on my ListView (similar to ApiDemo's LayoutAnimation2 ) and remove elements from my adapter after the list has displayed, the elements disappear immediately instead of getting animated out. I've also tried things like the following to animate an individual item when it is removed: However, the rows surrounding the animated row don't move position until they jump to their new positions when notifyDataSetChanged() is called. It appears ListView doesn't update its layout once its elements have been placed. While writing my own implementation/fork of ListView has crossed my mind, this seems like something that shouldn't be so difficult. Thanks!", 
+        "id": "3928193"
+    }, 
+    {
+        "text": "Use Pattern.#compile(s)# to obtain a Pattern out of a String s . Use p.matcher(s) to obtain a Matcher out of a Pattern p on a #String# s . Then you can use the Matcher . Note that ideally you should store Pattern s as keys in your #Map# ; creating the same set of patterns each time is a waste.", 
+        "id": "22855331"
+    }, 
+    {
+        "text": "A good way of saving data in an application which is independent of the activities in the application is to have an application object . Although the documentation says \"There is normally no need to subclass Application\", I find them very useful. Your application class needs to be mentioned in the application manifest, and it gets created before any activity objects. So store all your data in your application class, and then it won't matter what happens to your activities when the orientation changes.", 
+        "id": "16567221"
+    }, 
+    {
+        "text": "There is no callback for changed preferences in a PreferenceActivity. But you can use the normal OnSharedPreferenceChangeListener that you would use everywhere else. Just register it in and you'll get notified when a preference changes. Check for the correct key in the callback and reschedule your tasks.", 
+        "id": "6963771"
+    }, 
+    {
+        "text": "I would suggest reading up on Android AsyncTask .", 
+        "id": "6163107"
+    }, 
+    {
+        "text": "First let's make clear that the time 24:00 is a valid ISO-8601-time . Citation from ISO-8601: Java itself does not support 24:00 unless you use the lenient parsing mode of #SimpleDateFormat# . But even then the support is not available because if you ask the result (an instance of java.util.Date ) for the hour you get zero as you have already observed. Similar thoughts are valid for #java.util.GregorianCalendar# . After parsing, there is no chance to determine if the input was 24:00 or not (without knowing what the original input was). Java-8 also has no real support for this special hour. The best thing you can do here is using parseExcessDays() applied on the raw parsed data of #DateTimeFormatter# . You could use a workaround like this: The popular 3rd-party library Joda-Time has no support for 24:00. The situation is similar to SimpleDateFormat . The only library with built-in support I am aware of is Time4J which I have written myself. The full support is limited to #PlainTime# (similar pendant to #LocalTime# ), not valid for complete date-time-representations (where it would be ambivalent, timestamps containing 24:00 will automatically be normalized to next day at 00:00): Note that the state space of class PlainTime is slightly extended such that it can hold this special ISO-time-value. Therefore a direct programmatical access like this is possible:", 
+        "id": "31108175"
+    }, 
+    {
+        "text": "If you want a dynamically sized collection I would recommend using a List (like ArrayList ). This is a simple example of how it works: Output: You have to import java.util.ArrayList and java.util.List to be able to use them. You can also iterate over the List like this: Output: or iterate with an index: Output: (Note that the indexes are 0-based; i.e. they start at 0, not 1) For further information, please read the two Javadocs linked above for List and ArrayList", 
+        "id": "29770767"
+    }, 
+    {
+        "text": "You have no way of determining \"which app is using Internet at the moment\". However, using TrafficStats , you can determine which apps are using the Internet over a period of time. Here is a sample application showing the use of TrafficStats for this purpose. Also, on Android 4.0+, the Settings application can show you bandwidth consumption, but typically over a significant period of time.", 
+        "id": "9862233"
+    }, 
+    {
+        "text": "Here are some options I found ViewSwticher #CrossFade# edit I found this method to be ideal for cross-fading layouts.", 
+        "id": "34544917"
+    }
+]
